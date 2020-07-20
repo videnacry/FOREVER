@@ -17,12 +17,56 @@ function validateLogin(t) {
 function validateRegister(t) {
     //From args to const
     const target = t;
+
+    //SUCCESFULL REGISTER IF ALL VALIDATIONS ARE CORRECT
+    //Mega if
+    if(
+        algValidate(
+            target.children("input[name='username']"),
+            {
+                required: true,
+                min: 4,
+                max: 20,
+                charReq: []
+            }
+        ) 
+        &&
+        algValidate(
+            target.children("input[name='email']"),
+            {
+                required: true,
+                min: 4,
+                max: 20,
+                charReq: ["@", "."]
+            }
+        ) 
+        &&
+        algValidate(
+            target.children("input[name='password']"),
+            {
+                required: true,
+                min: 8,
+                max: 30,
+                charReq: []
+            }
+        ) 
+        &&
+        algValidate(
+            target.children("input[name='Cpassword']"),
+            {
+                required: true,
+                charReq: target.children("input[name='password']").val()
+            }
+        ) 
+    ) {
+
+    }
 }
 
 function algValidate(i, r = {
     required: true,
     min: 0,
-    max: -1,
+    max: 999999,
     charReq: []
 }) {
     //From args to const
