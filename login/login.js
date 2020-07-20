@@ -23,17 +23,20 @@ function validateRegister(t) {
 
     //SUCCESFULL REGISTER IF ALL VALIDATIONS ARE CORRECT
     //Mega if
-    if(iterateValidation([
+    if(validate([
         {
             el: target.find("input[name='username']"),
             req: {
+                required: true,
                 min: 3,
                 max: 20,
+                charReq: []
             }
         },
         {
             el: target.find("input[name='email']"),
             req: {
+                required: true,
                 min: 5,
                 max: 40,
                 charReq: ["@", "."]
@@ -42,13 +45,18 @@ function validateRegister(t) {
         {
             el: target.find("input[name='password']"),
             req: {
+                required: true,
                 min: 8,
                 max: 30,
+                charReq: []
             }
         },
         {
             el: target.find("input[name='Cpassword']"),
             req: {
+                required: true,
+                min: 8,
+                max: 30,
                 charReq: target.find("input[name='password']").val()
             }
         }
@@ -58,10 +66,28 @@ function validateRegister(t) {
     }
 }
 
-function iterateValidation(inputs) {
+function formatCharArray(array) {
+    let string = "";
+    let c = 1;
+
+    for(const elem of array) {
+        if(c < array.length) string += `"${elem}", `;
+        else string += `and "${elem}"`;
+        c++;
+    }
+
+    return string;
+}
+
+function validate(inputs) {
     let correct = true;
-    for(const input of inputs) 
-        if(!algValidate(input.el, input.req)) correct = false;
+    for(const input of inputs) {
+        if(input.req === undefined) { 
+            if(!algValidate(input.el)) correct = false;
+        } else { 
+            if(!algValidate(input.el, input.req)) correct = false;
+        }
+    }
 
     return correct;
 } 
@@ -69,7 +95,7 @@ function iterateValidation(inputs) {
 function algValidate(i, r = {
     required: true,
     min: 0,
-    max: 999999,
+    max: 9999,
     charReq: []
 }) {
     //From args to const
@@ -111,7 +137,7 @@ function algValidate(i, r = {
             if(!val.includes(char)) characterCorrect = false;
 
         if(!characterCorrect) {
-            parent.append(errorDiv.clone().text(`${key} has to have a ${req.charReq.join(", ")}.`));
+            parent.append(errorDiv.clone().text(`${key} has to have a ${formatCharArray(req.charReq)}.`));
             correct = false;
         }
     }
