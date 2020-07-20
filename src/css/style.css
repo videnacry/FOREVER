@@ -3,3 +3,11 @@
     height:30vw;
     background-color: antiquewhite;
 }
+.all-page{
+    width:100vw;
+    height:100vh;
+    position:fixed;
+    background-color: antiquewhite;
+    opacity: 0.5;
+    display: none;
+}

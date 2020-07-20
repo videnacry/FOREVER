@@ -13,6 +13,9 @@
             include 'header.php';
             include '../general_wall/general_wall.php';
         ?>
+        <div id="close-modals" class="all-page">
+
+        </div>
         <div id="profile" class="">
             <div class="d-flex justify-content-center py-4">
                 <div id="profile-photo" class="rounded-circle vw-third"></div>
@@ -21,12 +24,13 @@
                 <h1 id="profile-name">Beronidas</h1>
             </div>
             <div class="d-flex d-flex flex-row-reverse">
-                <button class="btn btn-secondary mx-2"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
-                <button class="btn btn-secondary mx-2"><i class="fas fa-plus-square"></i> Awesome post</button>
+                <button id="update-profile" class="btn btn-secondary mx-2"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
+                <button id="new-post" class="btn btn-secondary mx-2"><i class="fas fa-plus-square"></i> Awesome post</button>
             </div>
             <div class="d-flex d-flex flex-row-reverse">
                 
             </div>
         </div>
     </body>
+    <script src="../src/js/app.js"></script>
 </html>
