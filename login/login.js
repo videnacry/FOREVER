@@ -23,48 +23,48 @@ function validateRegister(t) {
 
     //SUCCESFULL REGISTER IF ALL VALIDATIONS ARE CORRECT
     //Mega if
-    if(
-        !algValidate(
-            target.find("input[name='username']"),
-            {
-                required: true,
-                min: 4,
+    if(iterateValidation([
+        {
+            el: target.find("input[name='username']"),
+            req: {
+                min: 3,
                 max: 20,
-                charReq: []
             }
-        ) 
-        ||
-        !algValidate(
-            target.find("input[name='email']"),
-            {
-                required: true,
+        },
+        {
+            el: target.find("input[name='email']"),
+            req: {
                 min: 5,
                 max: 40,
                 charReq: ["@", "."]
             }
-        ) 
-        ||
-        !algValidate(
-            target.find("input[name='password']"),
-            {
-                required: true,
+        },
+        {
+            el: target.find("input[name='password']"),
+            req: {
                 min: 8,
                 max: 30,
-                charReq: []
             }
-        ) 
-        ||
-        !algValidate(
-            target.find("input[name='Cpassword']"),
-            {
-                required: true,
+        },
+        {
+            el: target.find("input[name='Cpassword']"),
+            req: {
                 charReq: target.find("input[name='password']").val()
             }
-        ) 
+        }
+    ])
     ) {
-
+        //If validation returns true =>
     }
 }
+
+function iterateValidation(inputs) {
+    let correct = true;
+    for(const input of inputs) 
+        if(!algValidate(input.el, input.req)) correct = false;
+
+    return correct;
+} 
 
 function algValidate(i, r = {
     required: true,
@@ -101,14 +101,14 @@ function algValidate(i, r = {
     //Char check
     //Exact coincidence or character in string?
     if(typeof req.charReq == "string") {
-        if(!val.contains(req.charReq)) {
+        if(!val.includes(req.charReq)) {
             parent.append(errorDiv.clone().text(`${key} does not coincide.`));
             correct = false;
         }
     } else {
         let characterCorrect = true;
         for(const char of req.charReq) 
-            if(!val.contains(char)) characterCorrect = false;
+            if(!val.includes(char)) characterCorrect = false;
 
         if(!characterCorrect) {
             parent.append(errorDiv.clone().text(`${key} has to have a ${req.charReq.join(", ")}.`));
