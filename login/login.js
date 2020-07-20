@@ -26,7 +26,46 @@ function algValidate(i, r = {
     charReq: []
 }) {
     //From args to const
-    const val = i;
+    const target = i;
+    const key = i.before.text();
+    const val = i.val();
     const req = r;
 
+    let correct = true;
+    const errorDiv = $("<div class='alert alert-danger'></div>");
+
+    //Required check
+    if(val.length == 0) {
+        target.after(errorDiv.text(`${key} is required!`));
+        correct = false;
+    }
+        
+    //Length check
+    if(val.length < req.min) {
+        target.after(errorDiv.text(`${key} has to be at least ${req.min} characters.`));
+        correct = false;
+    } else if(val.length > req.max) {
+        target.after(errorDiv.text(`${key} cannot be more than ${req.max} characters.`));
+        correct = false;
+    } 
+
+    //Char check
+    //Exact coincidence or character in string?
+    if(typeof req.charReq == "string") {
+        if(!val.contains(req.charReq)) {
+            target.after(errorDiv.text(`${key} does not coincide.`));
+            correct = false;
+        }
+    } else {
+        let characterCorrect = true;
+        for(const char of req.charReq) 
+            if(!val.contains(char)) characterCorrect = false;
+
+        if(!characterCorrect) {
+            target.after(errorDiv.text(`${key} has to have a ${req.charReq.join(", ")}.`));
+            correct = false;
+        }
+    }
+
+    return correct;
 }
