@@ -8,3 +8,25 @@ $(document).ready(() => {
         else if(target.attr("id") == "register_f_SEND") validateRegister(target.parent());
     })
 })
+
+function validateLogin(t) {
+    //From args to const
+    const target = t;
+}
+
+function validateRegister(t) {
+    //From args to const
+    const target = t;
+}
+
+function algValidate(i, r = {
+    required: true,
+    min: 0,
+    max: -1,
+    charReq: []
+}) {
+    //From args to const
+    const val = i;
+    const req = r;
+
+}
