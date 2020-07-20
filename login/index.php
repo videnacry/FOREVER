@@ -9,19 +9,8 @@
     <script src="node_modules/jquery/dist/jquery.js"></script>
 </head>
 <body>
-    <form>
-        <fieldset>
-            <label>Username</label>
-            <input type="text" autocomplete="off" placeholder="CoolName80">
-        </fieldset>
-        <fieldset>
-            <label>Email</label>
-            <input type="text" autocomplete="off" placeholder="myemail@gmail.com">
-        </fieldset>
-        <fieldset>
-            <label>Password</label>
-            <input type="pass">
-        </fieldset>
+    <form id="lg_form">
+        <?php if(isset($_GET["register"])) include "forms/register.php"; else include "forms/login.php" ?>
     </form>
 </body>
 </html>
