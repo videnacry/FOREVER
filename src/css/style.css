@@ -21,3 +21,10 @@
     background-size: cover;
     background-position: center;
 }
+
+.name-box {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: calc(100vw - 68px - 6rem) !important;
+}
