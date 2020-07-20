@@ -31,7 +31,7 @@
           <div class="border border-secondary p-3 shadow mb-3">
             <img src="https://cdn.pixabay.com/photo/2015/10/21/16/36/architecture-999945_1280.jpg" alt="" class="img-fluid border border-secondary mb-3 d-none">
             <div class="row mx-0">
-              <div contenteditable="true" data-placeholder="What are your thoughts?" class="border border-secondary p-3 rounded w-100 text-secondary text-box">
+              <div contenteditable="true" data-placeholder="What are your thoughts?" class="border border-secondary p-3 rounded w-100 text-secondary" id="post-box">
                 What are your thoughts?
               </div>
               <!-- <textarea name="" id="" cols="100" rows="3" class="border border-secondary p-3 rounded" placeholder="What are your thoughts?"></textarea> -->
@@ -44,7 +44,7 @@
                 <button type="button" class="btn btn-sm btn-outline-primary">GIF</button>
               </div>
               <div class="buttons-block-2">
-                <button type="submit" class="btn btn-primary">Post</button>
+                <button type="submit" class="btn btn-primary" id="post">Post</button>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
             <!-- New comment -->
             <div class="border-left border-right border-bottom border-secondary p-3">
               <div class="row mx-0">
-                <div contenteditable="true" data-placeholder="Write a comment..." class="border border-secondary p-3 rounded w-100 text-secondary text-box">
+                <div contenteditable="true" data-placeholder="Write a comment..." class="border border-secondary p-3 rounded w-100 text-secondary" id="comment-box">
                   Write a comment...
                 </div>
                 <!-- <textarea name="" id="" cols="100" rows="3" class="border border-secondary p-3 rounded" placeholder="Write a comment..."></textarea> -->

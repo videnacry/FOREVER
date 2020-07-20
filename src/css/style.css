@@ -28,3 +28,8 @@
     text-overflow: ellipsis !important;
     max-width: calc(100vw - 68px - 6rem) !important;
 }
+
+#post-box p,
+#comment-box p {
+    margin-bottom: 0 !important;
+}
