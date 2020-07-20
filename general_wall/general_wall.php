@@ -50,8 +50,64 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8 border border-secondary p-3 shadow">
           <img src="https://cdn.pixabay.com/photo/2014/09/11/18/23/london-441853_1280.jpg" alt="" class="img-fluid border border-secondary">
-          <div class="row mx-auto mt-3 border border-secondary">
-            <div class="img-cont border rounded-circle">
+          <div class="post-content-container p-3 mt-3 border border-secondary">
+            <div class="row mx-auto">
+              <div class="float-left p-0 mr-3">
+                <div class="img-cont rounded-circle border border-light" id="img-1"></div>
+              </div>
+              <div class="my-auto text-left">
+                <p class="m-0 font-weight-bold text-capitalize">
+                  anna katarzyna emmerich
+                </p>
+                <p class="m-0">
+                  <small>April 23rd, 2020</small>
+                </p>
+              </div>
+            </div>
+            <div class="row mx-auto mt-3">
+              <p class="m-0 text-justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eius illo expedita vel distinctio. Possimus, officia repellendus totam omnis praesentium eos quae illo reiciendis, sit, recusandae provident voluptas veniam? Numquam.
+              </p>
+            </div>
+          </div>
+          <div class="row mt-2 px-3 justify-content-end">
+            <div class="likes mx-1">
+              25
+              <i class="far fa-heart"></i>
+              <!-- <i class="fas fa-heart"></i> -->
+            </div>
+            <div class="comments mx-1">
+              4
+              <i class="far fa-comment-alt"></i>
+              <!-- <i class="fas fa-comment-alt"></i> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <!-- New comment -->
+      <!-- Existing comments -->
+      <div class="row mx-auto">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 border-left border-right border-bottom border-secondary p-3 shadow">
+          <div class="comment-content-container p-3 border border-secondary">
+            <div class="row mx-auto">
+              <div class="float-left p-0 mr-3">
+                <div id="img-2" class="img-cont rounded-circle border border-light"></div>
+              </div>
+              <div class="my-auto text-left">
+                <p class="m-0 font-weight-bold text-capitalize">
+                  john stuart mill
+                </p>
+                <p class="m-0">
+                  <small>June 6th, 2020</small>
+                </p>
+              </div>
+            </div>
+            <div class="row mx-auto mt-3">
+              <p class="m-0 text-justify">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus eius illo expedita vel distinctio.
+              </p>
             </div>
           </div>
         </div>
