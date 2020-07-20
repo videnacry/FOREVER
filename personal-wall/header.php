@@ -1,5 +1,5 @@
 
-        <div class="nabvar navbar-dark bg-primary text-light px-4 py-2 d-flex justify-content-between">
+        <div class="nabvar navbar-dark bg-primary text-light px-4 py-2 d-flex justify-content-between sticky-top">
             <div class="collapse" id="navbar-toggle-extra-content">
                 <p>just a test</p>
             </div>
