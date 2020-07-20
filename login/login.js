@@ -4,8 +4,8 @@ $(document).ready(() => {
     $("#lg_form").click(e => {
         //Check which form is active
         const target = $(e.target);
-        if(target.attr("id") == "login_f_SEND") validateLogin(target.parent());
-        else if(target.attr("id") == "register_f_SEND") validateRegister(target.parent());
+        if(target.attr("id") == "login_f_SEND") validateLogin(target.parent().parent());
+        else if(target.attr("id") == "register_f_SEND") validateRegister(target.parent().parent());
     })
 })
 
@@ -18,11 +18,14 @@ function validateRegister(t) {
     //From args to const
     const target = t;
 
+    //Clean error messages
+    $(".alert").remove();
+
     //SUCCESFULL REGISTER IF ALL VALIDATIONS ARE CORRECT
     //Mega if
     if(
-        algValidate(
-            target.children("input[name='username']"),
+        !algValidate(
+            target.find("input[name='username']"),
             {
                 required: true,
                 min: 4,
@@ -30,19 +33,19 @@ function validateRegister(t) {
                 charReq: []
             }
         ) 
-        &&
-        algValidate(
-            target.children("input[name='email']"),
+        ||
+        !algValidate(
+            target.find("input[name='email']"),
             {
                 required: true,
-                min: 4,
-                max: 20,
+                min: 5,
+                max: 40,
                 charReq: ["@", "."]
             }
         ) 
-        &&
-        algValidate(
-            target.children("input[name='password']"),
+        ||
+        !algValidate(
+            target.find("input[name='password']"),
             {
                 required: true,
                 min: 8,
@@ -50,12 +53,12 @@ function validateRegister(t) {
                 charReq: []
             }
         ) 
-        &&
-        algValidate(
-            target.children("input[name='Cpassword']"),
+        ||
+        !algValidate(
+            target.find("input[name='Cpassword']"),
             {
                 required: true,
-                charReq: target.children("input[name='password']").val()
+                charReq: target.find("input[name='password']").val()
             }
         ) 
     ) {
@@ -71,25 +74,27 @@ function algValidate(i, r = {
 }) {
     //From args to const
     const target = i;
-    const key = i.before.text();
-    const val = i.val();
+
+    const parent = target.parent();
+    const key = target.prev().text();
+    const val = target.val();
     const req = r;
 
     let correct = true;
-    const errorDiv = $("<div class='alert alert-danger'></div>");
+    const errorDiv =  $("<div class='alert alert-danger'></div>");
 
     //Required check
     if(val.length == 0) {
-        target.after(errorDiv.text(`${key} is required!`));
+        parent.append(errorDiv.clone().text(`${key} is required!`));
         correct = false;
     }
         
     //Length check
     if(val.length < req.min) {
-        target.after(errorDiv.text(`${key} has to be at least ${req.min} characters.`));
+        parent.append(errorDiv.clone().text(`${key} has to be at least ${req.min} characters.`));
         correct = false;
     } else if(val.length > req.max) {
-        target.after(errorDiv.text(`${key} cannot be more than ${req.max} characters.`));
+        parent.append(errorDiv.clone().text(`${key} cannot be more than ${req.max} characters.`));
         correct = false;
     } 
 
@@ -97,7 +102,7 @@ function algValidate(i, r = {
     //Exact coincidence or character in string?
     if(typeof req.charReq == "string") {
         if(!val.contains(req.charReq)) {
-            target.after(errorDiv.text(`${key} does not coincide.`));
+            parent.append(errorDiv.clone().text(`${key} does not coincide.`));
             correct = false;
         }
     } else {
@@ -106,7 +111,7 @@ function algValidate(i, r = {
             if(!val.contains(char)) characterCorrect = false;
 
         if(!characterCorrect) {
-            target.after(errorDiv.text(`${key} has to have a ${req.charReq.join(", ")}.`));
+            parent.append(errorDiv.clone().text(`${key} has to have a ${req.charReq.join(", ")}.`));
             correct = false;
         }
     }
