@@ -6,7 +6,7 @@
     <title>GoTatoe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="login.js" defer></script>
-    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
 </head>
 <body>
     <form id="lg_form">
