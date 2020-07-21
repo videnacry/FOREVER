@@ -46,9 +46,24 @@
                     <i class="far fa-image text-primary"></i>
                   </label>
                 </div>
-                <button type="button" class="btn btn-outline-primary" id="gif-button">
-                  GIF
-                </button>
+                <div class="d-inline gif-cont">
+                  <button type="button" class="btn btn-outline-primary" id="gif-button">
+                    GIF
+                  </button>
+                  <div class="gif-img-cont d-none">
+                    <input type="text" name="" id="gif-input">
+                    <div class="gif-box">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="buttons-block-2">
                 <button type="submit" class="btn btn-primary" id="post">Post</button>

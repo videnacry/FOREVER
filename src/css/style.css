@@ -52,3 +52,38 @@
     position: relative !important;
     top: 2px !important;
 }
+
+.gif-cont {
+    position: relative;
+
+}
+
+.gif-img-cont {
+    position: absolute;
+    bottom: -320px;
+    left: 0;
+    width: 250px;
+    height: 300px;
+    z-index: 1;
+    background-color: white;
+    border: solid 1px #6c757d;
+    border-radius: 3px;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.gif-box {
+    max-height: 220px;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.gif-box img {
+    margin: 6px;
+    border: solid 1px #6c757d;
+}
+
+#gif-input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
