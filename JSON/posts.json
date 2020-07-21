@@ -1,24 +1,8 @@
-{
-    "owner":"",
-    "images":[],
-    "text":"",
-    "hashtag":"",
-    "comments":[
-        {
-            "owner":"",
-            "text":"",
-            "impacts":[
-                {
-                    "owner":"",
-                    "feeling":""
-                }
-            ]
-        }
-    ],
-    "impacts":[
-        {
-            "owner":"",
-            "feeling":""
-        }
-    ]
-}
+[{
+   "id": 0,
+   "author_id": 0,
+   "image_id": 0,
+   "created": 0,
+   "content": "",
+   "likes": 0
+}]

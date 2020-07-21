@@ -10,6 +10,7 @@
     position: fixed;
     background-color: antiquewhite;
     opacity: 0.5;
+    z-index:1;
     display: none;
 }
 
@@ -90,4 +91,8 @@
 
 .gif-element:hover {
     cursor: pointer;
+}
+
+.form-cont {
+    height: 100vh;
 }

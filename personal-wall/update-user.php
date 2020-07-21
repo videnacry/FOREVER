@@ -1,5 +1,5 @@
 
-   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-user">Update User</button>
+   <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-user">Update User</button>-->
 
    <div class="modal fade" id="modal-update-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
