@@ -1,7 +1,7 @@
 <?php
 require("../../src/php/functions.php");
 session_start();
-$_SESSION["user"] = findItem("../JSON/users.json", "id", 0);
+$_SESSION["user"] = findItem("../../JSON/users.json", "id", 0);
 
 if (isset($_POST)) {
    if ($_POST["username"] != $_SESSION["user"]["username"]) {
@@ -15,7 +15,7 @@ if (isset($_POST)) {
          die();
       }
    }
-   $userCompareUserName = findItem("../JSON/users.json", "username", $_POST["username"]);
+   $userCompareUserName = findItem("../../JSON/users.json", "username", $_POST["username"]);
    if($userCompareUserName["id"] != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]){
       echo json_encode([
          "type" => "error",
@@ -35,7 +35,7 @@ if (isset($_POST)) {
       }
    }
 
-   $userCompareEmail = findItem("../JSON/users.json", "email", $_POST["email"]);
+   $userCompareEmail = findItem("../../JSON/users.json", "email", $_POST["email"]);
    if($userCompareEmail && $userCompareEmail["id"] != $_SESSION["user"]["id"] && $userCompareEmail["email"] == $_POST["email"]){
       echo json_encode([
          "type" => "error",
@@ -66,10 +66,10 @@ if (isset($_POST)) {
    $toUpdate = findItem("../JSON/users.json", "id", $_SESSION["user"]["id"]);
 
    //Update User
-   removeItemOfJson("../JSON/users.json", $toUpdate);
+   removeItemOfJson("../../JSON/users.json", $toUpdate);
    $toUpdate["username"] = $_POST["username"];
    $toUpdate["email"] = $_POST["email"];
-   addItemInJson("../JSON/users.json", $toUpdate);
+   addItemInJson("../../JSON/users.json", $toUpdate);
 
 
    $_SESSION["user"] = $toUpdate;
