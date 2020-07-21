@@ -1,42 +1,46 @@
-//-----------------------------------Modal to add a post----------------------------------//
-const closeModals = document.getElementById('close-modals')
-const modalPost = document.getElementById('modal-post')
 
-$(modalPost).css({
-    display: "none",
-    position: "fixed",
-    top: "0vh",
-    left: "50vw",
-    transform: "translateY(-50%) translateX(-50%)",
-    zIndex: "1"
-})
-$('#update-profile').click(function () {
-    $('#modal-update-user').modal('toggle')
-})
-$('#new-post').click(function () {
-    $(closeModals).toggle()
-    $(modalPost).toggle()
-    $(modalPost).animate({
-        opacity: 1,
-        top: "50%"
-    }, {
-        duration: 500,
-        easing: "linear",
+if (document.getElementById("profile")) {
+
+    //-----------------------------------Modal to add a post----------------------------------//
+    const closeModals = document.getElementById('close-modals')
+    const modalPost = document.getElementById('modal-post')
+    const newPost = document.getElementById('new-post')
+
+    $(modalPost).css({
+        display: "none",
+        position: "absolute",
+        top: newPost.offsetTop + "px",
+        left: "50vw",
+        transform: "translateY(-50%) translateX(-50%)",
+        zIndex: "2"
     })
-})
-$(closeModals).click(function () {
-    $(closeModals).toggle()
-    $(modalPost).animate({
-        opacity: 0,
-        top: "0%"
-    }, {
-        duration: 500,
-        easing: "linear",
-        complete: function () {
-            $(this).toggle()
-        }
+    $("#modal-post-box").css("background-color","whitesmoke")
+    $(newPost).click(function () {
+        $(closeModals).toggle()
+        $(modalPost).toggle()
+        $(modalPost).animate({
+            opacity: 1,
+            top: newPost.offsetTop + "px"
+        }, {
+            duration: 500,
+            easing: "linear",
+        })
     })
-})
+    $(closeModals).click(function () {
+        $(closeModals).toggle()
+        $(modalPost).animate({
+            opacity: 0,
+            top: "0%"
+        }, {
+            duration: 500,
+            easing: "linear",
+            complete: function () {
+                $(this).toggle()
+            }
+        })
+    })
+
+}
 
 //----------------------------Print posts in profile--------------------------------------//
 
@@ -59,16 +63,16 @@ function getData(filters, url, callback) {
 
 //-----------------------------Modal to update user data----------------------------------//
 
-$("#formUpdateUser").submit(function(e){
-   e.preventDefault()
-   data = $(this).serialize();
-   $.ajax({
-      method: "POST",
-      url: "control-data/update-validation.php",
-      data: data,
-      success: function(data){
-      }
-   })
+$("#formUpdateUser").submit(function (e) {
+    e.preventDefault()
+    data = $(this).serialize();
+    $.ajax({
+        method: "POST",
+        url: "control-data/update-validation.php",
+        data: data,
+        success: function (data) {
+        }
+    })
 })
 // Get input boxes
 // const ele1 = document.getElementById('post-box');
@@ -110,7 +114,7 @@ $("#formUpdateUser").submit(function(e){
 //   e.preventDefault();
 //   console.log($('#post-box').html());
 //   $('#post-box').text($('#post-box').data('placeholder'));
-  // $('#test').html(($(this).parent().parent().prev().children().eq(0).html()));
+// $('#test').html(($(this).parent().parent().prev().children().eq(0).html()));
 // })
 
 
@@ -121,28 +125,28 @@ $('#gif-button').on('click', function () {
     const cont = $('.gif-img-cont');
     cont.toggleClass("d-none");
 
-    if(!cont.hasClass("d-none")) loadGifs();
+    if (!cont.hasClass("d-none")) loadGifs();
 })
 
 //Search gif
 let gifReqTimeout;
-$("#gif-input").on("input", e => { 
+$("#gif-input").on("input", e => {
     clearTimeout(gifReqTimeout);
     gifReqTimeout = setTimeout(() => loadGifs($(e.target).val().replace(/\s/g, "+")), 400)
 });
 
 //Function to load gifs
-function loadGifs(search="") {
+function loadGifs(search = "") {
     const box = $('.gif-box');
     $(".gif-element").remove();
 
     $.post("../general_wall/getGifs.php", { search: search }, data => {
         const gifs = JSON.parse(data).data;
 
-        for(const gif of gifs) {
+        for (const gif of gifs) {
             const DOMgif = $(`<img class="gif-element" src="${gif.images.preview_gif.url}" alt="${gif.title}" Width="170px">`);
-            DOMgif.hover( e => $(e.target).attr("src", gif.images.downsized.url), 
-                            e => $(e.target).attr("src", gif.images.preview_gif.url))
+            DOMgif.hover(e => $(e.target).attr("src", gif.images.downsized.url),
+                e => $(e.target).attr("src", gif.images.preview_gif.url))
 
             box.append(DOMgif);
         }
