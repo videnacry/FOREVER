@@ -1,6 +1,6 @@
-.vw-third{
-    width:30vw;
-    height:30vw;
+.vw-third {
+    width: 30vw;
+    height: 30vw;
     background-color: antiquewhite;
 }
 .all-page{
@@ -10,4 +10,34 @@
     background-color: antiquewhite;
     opacity: 0.5;
     display: none;
+}
+
+/* STYLES GENERAL WALL */
+.img-cont {
+    width: 50px;
+    height: 50px;
+}
+
+#img-1 {
+    background: url('https://cdn.pixabay.com/photo/2015/09/02/13/24/girl-919048_1280.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#img-2 {
+    background: url('https://cdn.pixabay.com/photo/2016/11/18/19/07/happy-1836445_1280.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.name-box {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: calc(100vw - 68px - 6rem) !important;
+}
+
+#post-box p,
+#comment-box p {
+    margin-bottom: 0 !important;
 }

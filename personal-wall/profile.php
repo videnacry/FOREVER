@@ -14,7 +14,7 @@
         <?php
             include 'header.php';
             include '../general_wall/post_modal.php';
-            include 'update-user-modal.php';
+            include 'update-user.php';
         ?>
         <div id="close-modals" class="all-page">
 

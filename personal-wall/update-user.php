@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
-   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
-</head>
-
-<body>
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-user">Update User</button>
 
    <div class="modal fade" id="modal-update-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -49,9 +39,3 @@
          </div>
       </div>
    </div>
-   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-   <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
-   <script src="test.js"></script>
-</body>
-
-</html>
