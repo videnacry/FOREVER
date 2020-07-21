@@ -1,5 +1,5 @@
 <?php
-require("functions.php");
+require("../../src/php/functions.php");
 session_start();
 $_SESSION["user"] = findItem("../JSON/users.json", "id", 0);
 
