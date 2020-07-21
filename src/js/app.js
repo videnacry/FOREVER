@@ -155,3 +155,71 @@ $("#post-image").change(function () {
         $('#img-new-post').addClass('d-none');
     }
 });
+
+// Event listener to show comments
+$('.fa-comment-alt').on('click', function (e) {
+    // Toggle visibility of new comment input
+    if ($('#new-comment-cont').hasClass('d-none')) {
+        $('#new-comment-cont').removeClass('d-none');
+    } else {
+        $('#new-comment-cont').addClass('d-none');
+    }
+    // Request object with required info using ajax
+    const postId = $('.fa-comment-alt').data('postid');
+    const origin = "posts";
+    $.post("../general_wall/getComments.php", {
+        postId: postId,
+        origin: origin
+    }, data => {
+        console.log(data);
+        let myComments = JSON.parse(data);
+        console.log(myComments);
+        // for (let i = 0; i < myComments.length; i++) {
+        //     let myComment = createComment(myComments[i]);
+        //     myComment.insertAfter($(e.target).parent().parent().parent().next())
+        // }
+    })
+})
+
+function createComment(commentObj) {
+    let wrapper = $('<div>');
+    wrapper.addClass('border-left border-right border-bottom border-secondary p-3');
+    let innerCont = $('<div>');
+    innerCont.addClass('comment-content-container p-3 border border-secondary');
+    innerCont.appendTo(wrapper);
+    let profileDiv = $('<div>');
+    profileDiv.addClass('row mx-auto');
+    profileDiv.appendTo(innerCont);
+    let picContDiv = $('<div>');
+    picContDiv.addClass('float-left p-0 mr-3');
+    picContDiv.appendTo(profileDiv);
+    let picDiv = $('<div>');
+    let picPath = commentObj.authorPictureUrl;
+    picDiv.addClass('img-cont rounded-circle border border-light');
+    picDiv.css({
+        'background-image': 'url(' + picPath + ')',
+        'background-repeat': 'no-repeat',
+        'background-size': 'cover',
+        'background-position': 'center'
+    });
+    picDiv.appendTo(picContDiv);
+    let nameContDiv = $('<div>');
+    nameContDiv.addClass('my-auto text-left');
+    nameContDiv.appendTo(profileDiv);
+    let name = $('<p>');
+    name.addClass('m-0 font-weight-bold text-capitalize name-box');
+    name.text(commentObj.authorName);
+    name.appendTo(nameContDiv);
+    let creation = $('<p>');
+    creation.addClass('m-0');
+    creation.text(commentObj.creationDate);
+    creation.appendTo(nameContDiv);
+    let commentDiv = $('<div>');
+    commentDiv.addClass('row mx-auto mt-3');
+    commentDiv.appendTo(innerCont);
+    let commentContent = $('<div>');
+    commentContent.addClass('m-0 text-justify');
+    commentContent.text(commentObj.content);
+    commentContent.appendTo(commentDiv);
+    return wrapper;
+}
