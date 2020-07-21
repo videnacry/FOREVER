@@ -5,7 +5,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8 p-0">
                 <!-- Existing posts -->
-                <div class="post-wrapper shadow">
+                <div class="post-wrapper">
                     
                 </div>
             </div>

@@ -130,10 +130,10 @@ function loadPosts(index=0) {
 
         for(const post of posts) {
             $(".post-wrapper").append(`
-            <div class="post-container border border-secondary p-3" data-postID="${post.id}">
+            <div class="post-container border rounded p-3 mb-3 shadow" data-postID="${post.id}">
                 <img src="${post.postImage}" alt=""
-                    class="img-fluid border border-secondary">
-                <div class="post-content-container p-3 mt-3 border border-secondary">
+                    class="img-fluid border ">
+                <div class="post-content-container p-3 mt-3 border rounded">
                     <div class="row mx-auto">
                         <div class="float-left p-0 mr-3">
                             <div class="img-cont rounded-circle border border-light" style="background-image: url('${post.userImage}')"></div>
