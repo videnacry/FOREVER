@@ -158,7 +158,7 @@ function loadPosts(index=0) {
                 <div class="row mt-2 px-3 justify-content-end">
                     <div class="num-likes mx-1">
                         <p class="m-0 d-inline">${post.likes}</p>
-                        <i class="far fa-heart"></i>
+                        <i class="far fa-heart icon-like" data-postID="${post.id}"></i>
                         <!-- <i class="fas fa-heart"></i> -->
                     </div>
                     <div class="num-comments mx-1">

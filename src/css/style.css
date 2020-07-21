@@ -87,3 +87,33 @@
 .form-cont {
     height: 100vh;
 }
+
+/* ------ LIKE AND COMMENT ICONS ------ */
+
+.icon-like{
+   position: relative;
+   cursor: pointer;
+}
+
+.icon-like::after{
+   content: "\f004";
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0;
+}
+
+@keyframes click-icon{
+   0%{
+      opacity: 1;
+   }
+   100%{
+      opacity: 0;
+      transform: scale(2);
+      -webkit-transform: scale(2);
+      -moz-transform: scale(2);
+      -ms-transform: scale(2);
+      -o-transform: scale(2);
+   }
+}
+
