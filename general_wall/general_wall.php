@@ -18,11 +18,11 @@
   <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 </head>
 <body>
-        <?php
-            include '../personal-wall/header.php';
-            include 'post_modal.php';
-            include 'post.php';
-        ?>
+    <?php
+        include '../personal-wall/header.php';
+        include 'post_modal.php';
+        include 'post.php';
+    ?>
   <script src="../src/js/app.js"></script>
 </body>
 </html>

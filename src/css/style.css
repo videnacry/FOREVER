@@ -89,6 +89,10 @@
     margin-bottom: 1rem;
 }
 
+.gif-element:hover {
+    cursor: pointer;
+}
+
 .form-cont {
     height: 100vh;
 }
