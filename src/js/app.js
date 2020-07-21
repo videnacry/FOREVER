@@ -183,9 +183,9 @@ $('.fa-comment-alt').on('click', function (e) {
 
 function createComment(commentObj) {
     let wrapper = $('<div>');
-    wrapper.addClass('border-left border-right border-bottom border-secondary p-3');
+    wrapper.addClass('border-left border-right border-bottom p-3');
     let innerCont = $('<div>');
-    innerCont.addClass('comment-content-container p-3 border border-secondary');
+    innerCont.addClass('comment-content-container p-3 border');
     innerCont.appendTo(wrapper);
     let profileDiv = $('<div>');
     profileDiv.addClass('row mx-auto');
