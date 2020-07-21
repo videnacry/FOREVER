@@ -15,6 +15,17 @@ function validateLogin(t) {
 
     const usermail = target.find("input[name='usermail']");
     const password = target.find("input[name='password']");
+
+    $(".alert").remove();
+
+    if(validate([ { el: usermail }, { el: password } ])) {
+        $.post("loginUser.php", {
+            usermail: usermail.val(),
+            password: password.val()
+        }, data => {
+            l(data);
+        })
+    }
 }
 
 function validateRegister(t) {
