@@ -34,17 +34,22 @@
     array_push($formattedComments, $newCommentData);
   }
 
-  // function cmp($a, $b) {
-  //   if ($a == $b) {
-  //       return 0;
-  //   }
-  //   return ($a->creationDate > $b->creationDate) ? -1 : 1;
-  // }
-
-  // uasort($formattedComments, 'cmp');
-
-  foreach($formattedComments as $comment){
-    $comment->creationDate = date('F jS, Y', $comment->creationDate);
+  function cmp($a, $b) {
+    if ($a == $b) {
+        return 0;
+    }
+    return ($a->creationDate < $b->creationDate) ? -1 : 1;
   }
 
-  echo json_encode($formattedComments);
+  uasort($formattedComments, 'cmp');
+
+  $sortedComments = [];
+  foreach($formattedComments as $comment){
+    array_push($sortedComments, $comment);
+  }
+
+  foreach($sortedComments as $item){
+    $item->creationDate = date('F jS, Y \a\t H:i', $item->creationDate);
+  }
+
+  echo json_encode($sortedComments);

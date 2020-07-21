@@ -174,10 +174,10 @@ $('.fa-comment-alt').on('click', function (e) {
         console.log(data);
         let myComments = JSON.parse(data);
         console.log(myComments);
-        // for (let i = 0; i < myComments.length; i++) {
-        //     let myComment = createComment(myComments[i]);
-        //     myComment.insertAfter($(e.target).parent().parent().parent().next())
-        // }
+        for (let i = 0; i < myComments.length; i++) {
+            let myComment = createComment(myComments[i]);
+            myComment.insertAfter($(e.target).parent().parent().parent().next())
+        }
     })
 })
 
