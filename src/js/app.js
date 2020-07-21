@@ -120,6 +120,11 @@ $("#formUpdateUser").submit(function (e) {
 
 //----------------------------- General wall ----------------------------------//
 
+// Load posts
+function loadPosts(index=-1) {
+
+}
+
 // Toggle GIF modal
 $('#gif-button').on('click', function () {
     const cont = $('.gif-img-cont');
@@ -157,6 +162,20 @@ function loadGifs(search = "") {
         })
     })
 }
+
+// Create new post
+$("#post").click(e => {
+    const text = $("#modal-post-box").find("textarea").val();
+    const multimedia = $("#img-new-post").attr("src");
+
+    $.post("../general_wall/newPost.php", {
+        text: text,
+        image: multimedia
+    }, data => {
+        console.log(data)
+        loadPosts();
+    })
+})
 
 // Preview loaded image
 function readURL(input) {

@@ -1,17 +1,10 @@
-[{
-      "id": 0,
-      "origin": "post",
-      "origin_id": 0,
-      "path": "",
-      "description": null,
-      "likes": null
-   },
-   {
-      "id": 0,
-      "origin": "user",
-      "origin_id": 0,
-      "path": "",
-      "description": "",
-      "likes": 0
-   }
+[
+    {
+        "id": 0,
+        "origin": "profile",
+        "origin_id": 0,
+        "path": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi2-prod.mirror.co.uk%2Fincoming%2Farticle9707694.ece%2FALTERNATES%2Fs615%2FFox.jpg&f=1&nofb=1",
+        "description": null,
+        "likes": null
+    }
 ]

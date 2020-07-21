@@ -1,8 +1,10 @@
-[{
-   "id": 0,
-   "author_id": 0,
-   "image_id": 0,
-   "created": 0,
-   "content": "",
-   "likes": 0
-}]
+[
+    {
+        "id": 0,
+        "author_id": 0,
+        "image_id": 0,
+        "created": "July 21st, 2020",
+        "content": "We are online!",
+        "likes": 0
+    }
+]
