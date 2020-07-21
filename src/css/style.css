@@ -102,6 +102,13 @@
    left: 0;
    opacity: 0;
 }
+.icon-like.active{
+   color: rgb(255, 103, 103);
+}
+.icon-like.active::after{
+   animation: click-icon .7s ease-in-out forwards;
+   -webkit-animation: click-icon .7s ease-in-out forwards;
+}
 
 @keyframes click-icon{
    0%{
@@ -109,11 +116,11 @@
    }
    100%{
       opacity: 0;
-      transform: scale(2);
-      -webkit-transform: scale(2);
-      -moz-transform: scale(2);
-      -ms-transform: scale(2);
-      -o-transform: scale(2);
-   }
+      transform: scale(2.3);
+      -webkit-transform: scale(2.3);
+      -moz-transform: scale(2.3);
+      -ms-transform: scale(2.3);
+      -o-transform: scale(2.3);
+}
 }
 

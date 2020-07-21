@@ -249,3 +249,10 @@ $("#post-image").change(function () {
         $('#img-new-post').addClass('d-none');
     }
 });
+
+
+/* ------ LIKE AND COMMENT ICONS ------ */
+
+$(".post-wrapper").on("click", ".icon-like", function(){
+   $(this).toggleClass("active far fas")
+})
