@@ -12,6 +12,9 @@ $(document).ready(() => {
 function validateLogin(t) {
     //From args to const
     const target = t;
+
+    const usermail = target.find("input[name='usermail']");
+    const password = target.find("input[name='password']");
 }
 
 function validateRegister(t) {
@@ -65,16 +68,13 @@ function validateRegister(t) {
                 charReq: password.val()
             }
         }
-    ])
-    ) {
+    ])) {
         //If validation returns true =>
         $.post("registerUser.php", {
-            username: user,
-            email: email,
-            password: password
-        }, data => {
-            console.log(data);
-        })
+            username: user.val(),
+            email: email.val(),
+            password: password.val()
+        }, () => location.replace("../personal-wall/profile.php"));
     }
 }
 
