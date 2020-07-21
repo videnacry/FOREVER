@@ -1,30 +1,30 @@
 [{
       "id": 1,
-      "origin": "post",
-      "origin_id": 1,
-      "author_id": 3,
-      "created": 0,
-      "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint maxime consectetur facere distinctio sequi reprehenderit, aspernatur, earum voluptates magni ratione aut voluptatibus commodi ducimus eveniet, fuga itaque eaque expedita aperiam?"
+      "origin": "posts",
+      "origin_id": 0,
+      "author_id": 0,
+      "created": 1584658800,
+      "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint maxime consectetur facere distinctio."
    },
    {
       "id": 2,
-      "origin": "image",
-      "origin_id": 2,
-      "author_id": 4,
-      "created": 0,
+      "origin": "posts",
+      "origin_id": 0,
+      "author_id": 0,
+      "created": 1577833200,
       "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint maxime consectetur facere distinctio sequi reprehenderit, aspernatur, earum voluptates magni ratione aut voluptatibus commodi ducimus eveniet, fuga itaque eaque expedita aperiam?"
    },
    {
       "id": 3,
-      "origin": "post",
-      "origin_id": 2,
-      "author_id": 2,
-      "created": 0,
-      "content": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint maxime consectetur facere distinctio sequi reprehenderit, aspernatur, earum voluptates magni ratione aut voluptatibus commodi ducimus eveniet, fuga itaque eaque expedita aperiam?"
+      "origin": "posts",
+      "origin_id": 0,
+      "author_id": 0,
+      "created": 1595366338,
+      "content": "Sequi reprehenderit, aspernatur, earum voluptates magni ratione aut voluptatibus commodi ducimus eveniet, fuga itaque eaque expedita aperiam?"
    },
    {
       "id": 4,
-      "origin": "post",
+      "origin": "posts",
       "origin_id": 3,
       "author_id": 1,
       "created": 0,
