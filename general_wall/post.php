@@ -5,7 +5,7 @@
             <div class="col-sm-2"></div>
             <div class="col-sm-8 p-0">
                 <!-- Existing posts -->
-                <div class="post-wrapper shadow">
+                <div class="post-wrapper shadow mb-3">
                     <!-- Initial post -->
                     <div class="border border-secondary p-3">
                         <img src="https://cdn.pixabay.com/photo/2014/09/11/18/23/london-441853_1280.jpg" alt=""
@@ -42,13 +42,13 @@
                             </div>
                             <div class="num-comments mx-1">
                                 <p class="m-0 d-inline">4</p>
-                                <i class="far fa-comment-alt"></i>
+                                <i class="far fa-comment-alt" data-postid="0"></i>
                                 <!-- <i class="fas fa-comment-alt"></i> -->
                             </div>
                         </div>
                     </div>
                     <!-- New comment -->
-                    <div class="border-left border-right border-bottom border-secondary p-3">
+                    <div class="border-left border-right border-bottom border-secondary p-3 d-none" id="new-comment-cont">
                         <div class="row mx-0">
                             <!-- <div contenteditable="true" data-placeholder="Write a comment..." class="border border-secondary p-3 rounded w-100 text-secondary" id="comment-box">
                                 </div> -->
@@ -64,8 +64,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Existing comments -->
-                    <div class="border-left border-right border-bottom border-secondary p-3">
+                    <!-- Existing comments (Template) -->
+                    <!-- <div class="border-left border-right border-bottom border-secondary p-3">
                         <div class="comment-content-container p-3 border border-secondary">
                             <div class="row mx-auto">
                                 <div class="float-left p-0 mr-3">
@@ -88,7 +88,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
