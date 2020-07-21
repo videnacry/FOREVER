@@ -87,3 +87,7 @@
     width: 100%;
     margin-bottom: 1rem;
 }
+
+.login-cont {
+    height: 100vh;
+}
