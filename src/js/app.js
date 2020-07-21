@@ -118,10 +118,23 @@ $("#formUpdateUser").submit(function(e){
 
 // Toggle GIF modal
 $('#gif-button').on('click', function () {
-    if ($('.gif-img-cont').hasClass('d-none')) {
-        $('.gif-img-cont').removeClass('d-none');
-    } else {
-        $('.gif-img-cont').addClass('d-none');
+    const cont = $('.gif-img-cont');
+    const box = $('.gif-box');
+
+    cont.toggleClass("d-none");
+    if(!cont.hasClass("d-none")) {
+        $.get("../general_wall/getGifs.php", data => {
+            const gifs = JSON.parse(data).data;
+            console.log(gifs)
+
+            for(const gif of gifs) {
+                const DOMgif = $(`<img src="${gif.images["480w_still"].url}" alt="${gif.title}" Width="170px">`);
+                DOMgif.hover( e => $(e.target).attr("src", gif.images.downsized.url), 
+                              e => $(e.target).attr("src", gif.images["480w_still"].url))
+
+                box.append(DOMgif);
+            }
+        })
     }
 })
 
