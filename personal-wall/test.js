@@ -1,15 +1,15 @@
-const { data } = require("jquery")
+
 
 $("#formUpdateUser").submit(function(e){
-   e.preveventDefault()
+   e.preventDefault()
    data = $(this).serialize();
+   console.log(data);
    $.ajax({
       method: "POST",
-      url: "update-user.php",
+      url: "update-validation.php",
       data: data,
       success: function(data){
          console.log(data);
-         
       }
    })
 })
