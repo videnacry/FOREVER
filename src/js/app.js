@@ -119,24 +119,35 @@ $("#formUpdateUser").submit(function(e){
 // Toggle GIF modal
 $('#gif-button').on('click', function () {
     const cont = $('.gif-img-cont');
-    const box = $('.gif-box');
-
     cont.toggleClass("d-none");
-    if(!cont.hasClass("d-none")) {
-        $.get("../general_wall/getGifs.php", data => {
-            const gifs = JSON.parse(data).data;
-            console.log(gifs)
 
-            for(const gif of gifs) {
-                const DOMgif = $(`<img src="${gif.images["480w_still"].url}" alt="${gif.title}" Width="170px">`);
-                DOMgif.hover( e => $(e.target).attr("src", gif.images.downsized.url), 
-                              e => $(e.target).attr("src", gif.images["480w_still"].url))
-
-                box.append(DOMgif);
-            }
-        })
-    }
+    if(!cont.hasClass("d-none")) loadGifs();
 })
+
+//Search gif
+let gifReqTimeout;
+$("#gif-input").on("input", e => { 
+    clearTimeout(gifReqTimeout);
+    gifReqTimeout = setTimeout(() => loadGifs($(e.target).val().replace(/\s/g, "+")), 400)
+});
+
+//Function to load gifs
+function loadGifs(search="") {
+    const box = $('.gif-box');
+    $(".gif-element").remove();
+
+    $.post("../general_wall/getGifs.php", { search: search }, data => {
+        const gifs = JSON.parse(data).data;
+
+        for(const gif of gifs) {
+            const DOMgif = $(`<img class="gif-element" src="${gif.images.preview_gif.url}" alt="${gif.title}" Width="170px">`);
+            DOMgif.hover( e => $(e.target).attr("src", gif.images.downsized.url), 
+                            e => $(e.target).attr("src", gif.images.preview_gif.url))
+
+            box.append(DOMgif);
+        }
+    })
+}
 
 // Preview loaded image
 function readURL(input) {
