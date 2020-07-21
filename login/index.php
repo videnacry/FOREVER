@@ -21,5 +21,6 @@
             if(isset($_GET["register"])) include "forms/register.php"; else include "forms/login.php" 
         ?>
     </form>
+    <script src="login.js"></script>
 </body>
 </html>
