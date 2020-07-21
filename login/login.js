@@ -23,7 +23,13 @@ function validateLogin(t) {
             usermail: usermail.val(),
             password: password.val()
         }, data => {
-            l(data);
+            const error = $(`<div class='alert alert-danger'>${data}</div>`);
+
+            if(data == "SUCCESS") location.replace("../personal-wall/profile.php")
+            else {
+                if(data.includes("email")) usermail.after(error);
+                else password.after(error);
+            }
         })
     }
 }
