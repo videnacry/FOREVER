@@ -5,13 +5,16 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <title>Profile</title>
         <link rel="stylesheet" href="..\node_modules\bootstrap\dist\css\bootstrap.css"/>
+        <script src="..\node_modules\jquery\dist\jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/de217cab6a.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="..\src\css\style.css"/>
     </head>
     <body>
         <?php
             include 'header.php';
-            include '../general_wall/general_wall.php';
+            include '../general_wall/post_modal.php';
+            include 'update-user-modal.php';
         ?>
         <div id="close-modals" class="all-page">
 
@@ -22,6 +25,9 @@
             </div>
             <div class="d-flex justify-content-center py-4">
                 <h1 id="profile-name">Beronidas</h1>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p id="profile-description">After some time it was discover and with it who would say for that time the consecuences.</p>
             </div>
             <div class="d-flex d-flex flex-row-reverse">
                 <button id="update-profile" class="btn btn-secondary mx-2"><i class="fas fa-pencil-alt"></i> Editar perfil</button>
