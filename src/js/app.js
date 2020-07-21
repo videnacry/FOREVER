@@ -1,3 +1,4 @@
+$(document).ready(() => loadPosts());
 
 if (document.getElementById("profile")) {
 
@@ -121,8 +122,55 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
-function loadPosts(index=-1) {
+function loadPosts(index=0) {
+    if(index < 10) $(".post-container").remove();
 
+    $.post("../general_wall/getPosts.php", { index: index }, data => {
+        const posts = JSON.parse(data);
+
+        for(const post of posts) {
+            $(".post-wrapper").append(`
+            <div class="post-container border border-secondary p-3" data-postID="${post.id}">
+                <img src="${post.postImage}" alt=""
+                    class="img-fluid border border-secondary">
+                <div class="post-content-container p-3 mt-3 border border-secondary">
+                    <div class="row mx-auto">
+                        <div class="float-left p-0 mr-3">
+                            <div class="img-cont rounded-circle border border-light" style="background-image: url('${post.userImage}')"></div>
+                        </div>
+                        <div class="my-auto text-left">
+                            <p class="m-0 font-weight-bold text-capitalize name-box">
+                                ${post.userName}
+                            </p>
+                            <p class="m-0">
+                                <small>${post.dateFormated}</small>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row mx-auto mt-3">
+                        <p class="m-0 text-justify">
+                            ${post.content}
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-2 px-3 justify-content-end">
+                    <div class="num-likes mx-1">
+                        <p class="m-0 d-inline">${post.likes}</p>
+                        <i class="far fa-heart"></i>
+                        <!-- <i class="fas fa-heart"></i> -->
+                    </div>
+                    <div class="num-comments mx-1">
+                        <p class="m-0 d-inline">${post.comments}</p>
+                        <i class="far fa-comment-alt"></i>
+                        <!-- <i class="fas fa-comment-alt"></i> -->
+                    </div>
+                </div>
+            </div>
+            `)
+        }
+    })
+
+/**/
 }
 
 // Toggle GIF modal
@@ -172,8 +220,9 @@ $("#post").click(e => {
         text: text,
         image: multimedia
     }, data => {
-        console.log(data)
         loadPosts();
+        $("#modal-post-box").find("textarea").val("");
+        $("#img-new-post").attr("src", "");
     })
 })
 

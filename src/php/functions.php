@@ -84,5 +84,5 @@ function getImagePath(int $id) : string
    foreach($data as $img) 
       if($img->id == $id) return $img->path;
 
-   return "error";
+   return "";
 }
