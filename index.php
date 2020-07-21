@@ -13,14 +13,16 @@
     <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="lg_form">
-        <?php 
-            session_start();
-            if(isset($_SESSION["loggedUserID"])) header("Location: personal-wall/profile.php");
-            
-            if(isset($_GET["register"])) include "login/forms/register.php"; else include "login/forms/login.php" 
-        ?>
-    </form>
+    <main>
+        <form id="lg_form">
+            <?php
+                session_start();
+                if(isset($_SESSION["loggedUserID"])) header("Location: personal-wall/profile.php");
+                
+                if(isset($_GET["register"])) include "login/forms/register.php"; else include "login/forms/login.php"
+            ?>
+        </form>
+    </main>
     <script src="login/login.js"></script>
 </body>
 </html>
