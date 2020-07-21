@@ -87,3 +87,7 @@
     width: 100%;
     margin-bottom: 1rem;
 }
+
+.gif-element:hover {
+    cursor: pointer;
+}

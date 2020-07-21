@@ -120,6 +120,7 @@ $("#formUpdateUser").submit(function(e){
 $('#gif-button').on('click', function () {
     const cont = $('.gif-img-cont');
     cont.toggleClass("d-none");
+    $("#gif-input").val("");
 
     if(!cont.hasClass("d-none")) loadGifs();
 })
@@ -135,17 +136,15 @@ $("#gif-input").on("input", e => {
 function loadGifs(search="") {
     const box = $('.gif-box');
     $(".gif-element").remove();
-
+    
+    box.append(`<img class="gif-element" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fstatic.onemansblog.com%2Fwp-content%2Fuploads%2F2016%2F05%2FSpinner-Loading.gif&f=1&nofb=1" alt="Loading..." Width="170px" style="border:none">`);
     $.post("../general_wall/getGifs.php", { search: search }, data => {
         const gifs = JSON.parse(data).data;
+        $(".gif-element").remove();
 
-        for(const gif of gifs) {
-            const DOMgif = $(`<img class="gif-element" src="${gif.images.preview_gif.url}" alt="${gif.title}" Width="170px">`);
-            DOMgif.hover( e => $(e.target).attr("src", gif.images.downsized.url), 
-                            e => $(e.target).attr("src", gif.images.preview_gif.url))
-
-            box.append(DOMgif);
-        }
+        for(const gif of gifs) 
+            box.append(`<img class="gif-element" src="${gif.images.preview_gif.url}" alt="${gif.title}" Width="170px">`);
+    
     })
 }
 
