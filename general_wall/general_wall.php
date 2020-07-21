@@ -29,7 +29,7 @@
         <div class="col-sm-8 p-0">
           <!-- Input for new post -->
           <div class="border border-secondary p-3 shadow mb-3">
-            <img src="https://cdn.pixabay.com/photo/2015/10/21/16/36/architecture-999945_1280.jpg" alt="" class="img-fluid border border-secondary mb-3 d-none">
+            <img src="https://cdn.pixabay.com/photo/2015/10/21/16/36/architecture-999945_1280.jpg" alt="" class="img-fluid border border-secondary mb-3 d-none" id="img-new-post">
             <div class="row mx-0">
               <!-- <div contenteditable="true" data-placeholder="What are your thoughts?" class="border border-secondary p-3 rounded w-100 text-secondary" id="post-box">
               </div> -->

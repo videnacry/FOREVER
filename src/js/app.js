@@ -78,6 +78,7 @@ $("#formUpdateUser").submit(function (e) {
 
 //----------------------------- General wall ----------------------------------//
 
+// Toggle GIF modal
 $('#gif-button').on('click', function () {
     if ($('.gif-img-cont').hasClass('d-none')) {
         $('.gif-img-cont').removeClass('d-none');
@@ -85,3 +86,25 @@ $('#gif-button').on('click', function () {
         $('.gif-img-cont').addClass('d-none');
     }
 })
+
+// Preview loaded image
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#img-new-post').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+}
+
+$("#post-image").change(function () {
+    readURL(this);
+
+    if ($('#img-new-post').hasClass('d-none')) {
+        $('#img-new-post').removeClass('d-none');
+    } else {
+        $('#img-new-post').addClass('d-none');
+    }
+});
