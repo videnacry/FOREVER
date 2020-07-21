@@ -1,0 +1,17 @@
+[{
+      "id": 0,
+      "origin": "post",
+      "origin_id": 0,
+      "path": "",
+      "description": null,
+      "likes": null
+   },
+   {
+      "id": 0,
+      "origin": "user",
+      "origin_id": 0,
+      "path": "",
+      "description": "",
+      "likes": 0
+   }
+]
