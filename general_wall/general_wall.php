@@ -29,7 +29,7 @@
         <div class="col-sm-8 p-0">
           <!-- Input for new post -->
           <div class="border border-secondary p-3 shadow mb-3">
-            <img src="https://cdn.pixabay.com/photo/2015/10/21/16/36/architecture-999945_1280.jpg" alt="" class="img-fluid border border-secondary mb-3 d-none">
+            <img src="https://cdn.pixabay.com/photo/2015/10/21/16/36/architecture-999945_1280.jpg" alt="" class="img-fluid border border-secondary mb-3 d-none" id="img-new-post">
             <div class="row mx-0">
               <!-- <div contenteditable="true" data-placeholder="What are your thoughts?" class="border border-secondary p-3 rounded w-100 text-secondary" id="post-box">
               </div> -->
@@ -46,9 +46,24 @@
                     <i class="far fa-image text-primary"></i>
                   </label>
                 </div>
-                <button type="button" class="btn btn-outline-primary" id="gif-button">
-                  GIF
-                </button>
+                <div class="d-inline gif-cont">
+                  <button type="button" class="btn btn-outline-primary" id="gif-button">
+                    GIF
+                  </button>
+                  <div class="gif-img-cont d-none">
+                    <input type="text" name="" id="gif-input">
+                    <div class="gif-box">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                      <img src="https://images.pexels.com/photos/3632705/pexels-photo-3632705.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="" width="90px" height="">
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="buttons-block-2">
                 <button type="submit" class="btn btn-primary" id="post">Post</button>
