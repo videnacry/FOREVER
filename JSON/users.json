@@ -5,5 +5,10 @@
    "password": "genova",
    "description": "",
    "profilePicture": "none",
+   "images": [
+      "id" : 1,
+      "path" : "",
+      "description": ""
+   ]
    "postsID": []
 }]
