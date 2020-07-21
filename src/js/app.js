@@ -62,13 +62,11 @@ function getData(filters, url, callback) {
 $("#formUpdateUser").submit(function(e){
    e.preventDefault()
    data = $(this).serialize();
-   console.log(data);
    $.ajax({
       method: "POST",
       url: "control-data/update-validation.php",
       data: data,
       success: function(data){
-         console.log(data);
       }
    })
 })
