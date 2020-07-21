@@ -36,17 +36,17 @@
               <textarea name="" id="" cols="100" rows="3" class="border border-secondary p-3 rounded" placeholder="What are your thoughts?"></textarea>
             </div>
             <div class="row mx-0 mt-2 d-flex justify-content-between align-items-start">
-              <div class="buttons-block-1 w-50">
+              <div class="buttons-block-1 w-50 d-flex">
                 <!-- <button type="button" class="btn btn-sm btn-outline-primary mr-1">
                   <i class="far fa-image"></i>
                 </button> -->
-                <div class="custom-file w-25">
+                <div class="custom-file w-25" id="img-btn-cont">
                   <input type="file" class="custom-file-input outline-primary" id="post-image" name="post-image" accept="image/png, image/jpeg">
                   <label class="custom-file-label btn mr-1 mb-0 border border-primary" for="post-image" id="post-image-label">
                     <i class="far fa-image text-primary"></i>
                   </label>
                 </div>
-                <div class="d-inline gif-cont">
+                <div class="gif-cont">
                   <button type="button" class="btn btn-outline-primary" id="gif-button">
                     GIF
                   </button>
