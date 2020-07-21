@@ -141,10 +141,16 @@ function loadGifs(search="") {
     $.post("../general_wall/getGifs.php", { search: search }, data => {
         const gifs = JSON.parse(data).data;
         $(".gif-element").remove();
-
+        console.log(gifs)
         for(const gif of gifs) 
-            box.append(`<img class="gif-element" src="${gif.images.preview_gif.url}" alt="${gif.title}" Width="170px">`);
+            box.append(`<img class="gif-element" src="${gif.images.preview_gif.url}" data-src="${gif.images.downsized.url}" alt="${gif.title}" Width="170px">`);
     
+        $(".gif-element").click(e => { 
+            $('#img-new-post').attr('src', "")
+            $('#img-new-post').attr('src', e.target.dataset.src)
+            $('#img-new-post').removeClass("d-none");
+            $('.gif-img-cont').toggleClass("d-none");
+        })
     })
 }
 
