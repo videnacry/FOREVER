@@ -48,10 +48,10 @@ function printPost(data){
 
 function getData(filters,url,callback){
     $.ajax({
-        url=url,
-        method="POST",
-        data=filters,
-        success=function(response){
+        url:url,
+        method:"POST",
+        data:filters,
+        success:function(response){
             callback(response)
         }
     })
