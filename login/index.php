@@ -10,7 +10,12 @@
 </head>
 <body>
     <form id="lg_form">
-        <?php if(isset($_GET["register"])) include "forms/register.php"; else include "forms/login.php" ?>
+        <?php 
+            session_start();
+            if(isset($_SESSION["loggedUserID"])) header("Location: ../personal-wall/profile.php");
+            
+            if(isset($_GET["register"])) include "forms/register.php"; else include "forms/login.php" 
+        ?>
     </form>
 </body>
 </html>

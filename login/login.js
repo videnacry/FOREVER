@@ -12,11 +12,19 @@ $(document).ready(() => {
 function validateLogin(t) {
     //From args to const
     const target = t;
+
+    const usermail = target.find("input[name='usermail']");
+    const password = target.find("input[name='password']");
 }
 
 function validateRegister(t) {
     //From args to const
     const target = t;
+
+    const user = target.find("input[name='username']");
+    const email = target.find("input[name='email']");
+    const password = target.find("input[name='password']");
+    const confirmPassword = target.find("input[name='Cpassword']");
 
     //Clean error messages
     $(".alert").remove();
@@ -25,7 +33,7 @@ function validateRegister(t) {
     //Mega if
     if(validate([
         {
-            el: target.find("input[name='username']"),
+            el: user,
             req: {
                 required: true,
                 min: 3,
@@ -34,7 +42,7 @@ function validateRegister(t) {
             }
         },
         {
-            el: target.find("input[name='email']"),
+            el: email,
             req: {
                 required: true,
                 min: 5,
@@ -43,7 +51,7 @@ function validateRegister(t) {
             }
         },
         {
-            el: target.find("input[name='password']"),
+            el: password,
             req: {
                 required: true,
                 min: 8,
@@ -52,17 +60,21 @@ function validateRegister(t) {
             }
         },
         {
-            el: target.find("input[name='Cpassword']"),
+            el: confirmPassword,
             req: {
                 required: true,
                 min: 8,
                 max: 30,
-                charReq: target.find("input[name='password']").val()
+                charReq: password.val()
             }
         }
-    ])
-    ) {
+    ])) {
         //If validation returns true =>
+        $.post("registerUser.php", {
+            username: user.val(),
+            email: email.val(),
+            password: password.val()
+        }, () => location.replace("../personal-wall/profile.php"));
     }
 }
 
