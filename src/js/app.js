@@ -3,36 +3,36 @@ const closeModals = document.getElementById('close-modals')
 const modalPost = document.getElementById('modal-post')
 
 $(modalPost).css({
-    display:"none",
-    position:"fixed",
-    top:"0vh",
-    left:"50vw",
-    transform:"translateY(-50%) translateX(-50%)",
-    zIndex:"1"
+    display: "none",
+    position: "fixed",
+    top: "0vh",
+    left: "50vw",
+    transform: "translateY(-50%) translateX(-50%)",
+    zIndex: "1"
 })
-$('#update-profile').click(function(){
+$('#update-profile').click(function () {
     $('#modal-update-user').modal('toggle')
 })
-$('#new-post').click(function(){
+$('#new-post').click(function () {
     $(closeModals).toggle()
     $(modalPost).toggle()
     $(modalPost).animate({
-        opacity:1,
-        top:"50%"
+        opacity: 1,
+        top: "50%"
     }, {
         duration: 500,
-        easing:"linear",
+        easing: "linear",
     })
 })
-$(closeModals).click(function(){
+$(closeModals).click(function () {
     $(closeModals).toggle()
     $(modalPost).animate({
-        opacity:0,
-        top:"0%"
+        opacity: 0,
+        top: "0%"
     }, {
         duration: 500,
-        easing:"linear",
-        complete:function(){
+        easing: "linear",
+        complete: function () {
             $(this).toggle()
         }
     })
@@ -40,18 +40,18 @@ $(closeModals).click(function(){
 
 //----------------------------Print posts in profile--------------------------------------//
 
-function printPost(data){
-    
+function printPost(data) {
+
 }
 
 //----------------------------Get data by filter-----------------------------------------//
 
-function getData(filters,url,callback){
+function getData(filters, url, callback) {
     $.ajax({
-        url:url,
-        method:"POST",
-        data:filters,
-        success:function(response){
+        url: url,
+        method: "POST",
+        data: filters,
+        success: function (response) {
             callback(response)
         }
     })
