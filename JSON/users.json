@@ -1,1 +1,9 @@
-[{"id":0,"username":"kalipo","email":"kalipo9999@gmail.com","password":"genova","profilePicture":"none","postsID":[]}]
+[{
+   "id": 0,
+   "username": "kalipo",
+   "email": "kalipo9999@gmail.com",
+   "password": "genova",
+   "description": "",
+   "profilePicture": "none",
+   "postsID": []
+}]
