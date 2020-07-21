@@ -72,3 +72,17 @@ function removeItemOfJson(string $filePath, array $item)
       return true;
    }
 }
+
+/**
+ * Get an image path with the ID
+ * @param {Int} $id -> The ID of the image
+ * @return {String}
+ */
+function getImagePath(int $id) : string
+{
+   $data = json_decode(file_get_contents("../JSON/images.json"));
+   foreach($data as $img) 
+      if($img->id == $id) return $img->path;
+
+   return "error";
+}
