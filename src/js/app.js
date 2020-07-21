@@ -69,6 +69,7 @@ $("#formUpdateUser").submit(function(e){
       url: "update-user.php",
       data: data,
       success: function(data){
+         console.log(data);
          
       }
    })

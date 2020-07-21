@@ -1,8 +1,10 @@
 <?php
+require("functions.php");
+session_start();
+$_SESSION["user"] = findItem("../JSON/users.json", "id", 0);
 
 if (isset($_POST)) {
-
-   if ($_POST["username"] != $_SESSION["username"]) {
+   if ($_POST["username"] != $_SESSION["user"]["username"]) {
       $username = $_POST["username"];
       if (empty($username) || strlen($username) < 3) {
          echo json_encode([
@@ -13,8 +15,16 @@ if (isset($_POST)) {
          die();
       }
    }
-
-   if ($_POST["email"] != $_SESSION["email"]) {
+   $userCompareUserName = findItem("../JSON/users.json", "username", $_POST["username"]);
+   if($userCompareUserName["id"] != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]){
+      echo json_encode([
+         "type" => "error",
+         "input" => "email",
+         "message" => "Already exist an user with this username."
+      ]);
+      die();
+   }
+   if ($_POST["email"] != $_SESSION["user"]["email"]) {
       if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
          echo json_encode([
             "type" => "error",
@@ -23,6 +33,16 @@ if (isset($_POST)) {
          ]);
          die();
       }
+   }
+
+   $userCompareEmail = findItem("../JSON/users.json", "email", $_POST["email"]);
+   if($userCompareEmail && $userCompareEmail["id"] != $_SESSION["user"]["id"] && $userCompareEmail["email"] == $_POST["email"]){
+      echo json_encode([
+         "type" => "error",
+         "input" => "email",
+         "message" => "Already exist an user with this email."
+      ]);
+      die();
    }
 
    if (empty($_POST["password"]) || strlen($_POST["password"]) < 6) {
@@ -43,33 +63,26 @@ if (isset($_POST)) {
       die();
    }
 
-   $userCompareEmail = findItem("email", $_POST["email"]);
-   if($userCompareEmail != $_SESSION["id"] && $userCompareEmail["email"] == $_POST["email"]){
-      echo json_encode([
-         "type" => "error",
-         "input" => "email",
-         "message" => "Already exist an user with this email."
-      ]);
-      die();
-   }
+   $toUpdate = findItem("../JSON/users.json", "id", $_SESSION["user"]["id"]);
+
+   //Update User
+   removeItemOfJson("../JSON/users.json", $toUpdate);
+   $toUpdate["username"] = $_POST["username"];
+   $toUpdate["email"] = $_POST["email"];
+   addItemInJson("../JSON/users.json", $toUpdate);
+
+
+   $_SESSION["user"] = $toUpdate;
+   echo json_encode([
+      "type" => "ok",
+      "userData" => $_SESSION["user"]
+   ]);
+   die();
+
 }
 
-function getData(string $jsonFile)
-{
-   $data = file_get_contents("../JSON/" . $jsonFile . ".json");
-   $arrayData = json_decode($data, true);
-   return $arrayData;
-}
 
-function findItem($attr, $value)
-{
-   $arrayData = getData("users");
-   foreach ($arrayData as $item) {
-      if ($item[$attr] == $value) {
-         return $item;
-      }
-   }
-   return false;
-}
+
+
 
 

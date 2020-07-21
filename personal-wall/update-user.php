@@ -39,7 +39,7 @@
                      <input class="form-control" name="password-confirm" id="password-confirm"></input>
                   </div>
                   <div class="form-group text-right pt-3">
-                     <input type="submit" class="btn btn-primary" data-dismiss="modal" value="Save">
+                     <input type="submit" class="btn btn-primary" value="Save">
                      <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Cancer</button>
                   </div>
                </form>
@@ -51,6 +51,7 @@
    </div>
    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+   <script src="test.js"></script>
 </body>
 
 </html>
