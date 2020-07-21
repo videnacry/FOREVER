@@ -255,4 +255,33 @@ $("#post-image").change(function () {
 
 $(".post-wrapper").on("click", ".icon-like", function(){
    $(this).toggleClass("active far fas")
+   clickLike($(this))
 })
+
+function clickLike(heart){
+   let count = parseInt($(heart).prev().text())
+   let data
+
+   if($(heart).hasClass("active")){
+      $(heart).prev().text(++count)
+      data = {
+         "post-id" : $(heart).attr("data-postid"),
+         "like" : "add"
+      }
+   }else{
+      $(heart).prev().text(--count)
+      data = {
+         "post-id" : $(heart).attr("data-postid"),
+         "like" : "remove"
+      }
+   }
+
+   $.ajax({
+      url: "click-like.php",
+      method: "POST",
+      data: data,
+      success: function (response) {
+          
+      }
+  })
+}
