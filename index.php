@@ -17,7 +17,7 @@
         <form id="lg_form">
             <?php
                 session_start();
-                if(isset($_SESSION["loggedUserID"])) header("Location: personal-wall/profile.php");
+                if(isset($_SESSION["loggedUserID"])) header("Location: general_wall/");
                 
                 if(isset($_GET["register"])) include "login/forms/register.php"; else include "login/forms/login.php"
             ?>
