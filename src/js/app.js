@@ -266,10 +266,7 @@ function clickLike(heart) {
     $.ajax({
         url: "../general_wall/actions/click-like.php",
         method: "POST",
-        data: data,
-        success: function (response) {
-            console.log(response);
-        },
+        data: data
     });
 }
 
