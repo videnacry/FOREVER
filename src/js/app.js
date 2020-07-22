@@ -299,9 +299,9 @@ $(".post-wrapper").on("click", ".fa-comment-alt", function (e) {
                 origin: origin,
             },
             (data) => {
-                console.log(data);
+                // console.log(data);
                 let myComments = JSON.parse(data);
-                console.log(myComments);
+                // console.log(myComments);
                 for (let i = 0; i < myComments.length; i++) {
                     let myComment = createComment(myComments[i]);
                     myComment.insertAfter($(e.target).parent().parent().next());
@@ -335,16 +335,15 @@ $(".post-wrapper").on("click", ".btn-new-comment", function (e) {
                 origin: "posts"
             },
             (data) => {
-                console.log(data);
-                // let myComments = JSON.parse(data);
-                // console.log(myComments);
-                // for (let i = 0; i < myComments.length; i++) {
-                //     let myComment = createComment(myComments[i]);
-                //     myComment.insertAfter($(e.target).parent().parent().next());
-                // }
+                // console.log(data);
+                let newComment = JSON.parse(data);
+                // console.log(newComment);
+                let commentBox = createComment(newComment);
+                commentBox.insertAfter($(e.target).parent().parent().parent());
+                let numComments = parseInt($(e.target).parent().parent().parent().prev().children().eq(1).children().eq(0).text());
+                $(e.target).parent().parent().parent().prev().children().eq(1).children().eq(0).text(numComments + 1);
             }
         );
-
         // Clear text area at the end of the process
         $(e.target).parent().parent().prev().children().eq(0).val('');
     }
