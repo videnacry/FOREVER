@@ -91,11 +91,12 @@ if (document.getElementById("profile")) {
     })
 }
 
-if($('#update-login')){
-    $('#update-login').children('li').children('button').click(function(){
+if($('#formUpdateUser')){
+    $('#formUpdateUser').children('div').children('div').children('button').click(function(){
         const parent = event.currentTarget.parentElement
-        const child = $(parent).children('div').children('input')
+        const child = $(parent).children('input')
         if(child.prop("disabled")){
+            $('#formUpdateUser').children('div').children('div').children('input').prop("disabled","true")
             child.prop("disabled",false)  
         }else{
             child.prop("disabled",true)
@@ -135,8 +136,7 @@ $("#formUpdateUser").submit(function (e) {
         success: function (data) {console.log(data)},
     });
     
-    $(this).find('input').prop("disabled",true)
-    $(this).find('input[type=submit]').prop("disabled",false)
+    $(this).children('div').children('div').children('input').prop("disabled",true)
 });
 
 //----------------------------- General wall ----------------------------------//

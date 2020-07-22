@@ -17,18 +17,57 @@
             include "header.php";
         ?>
         <div class="d-flex flex-nowrap">
-            <nav class="navbar navbar-dark flex-column">
-                <ul class="navbar-nav list-group text-light flex-column">
-                    <li class="nav-item list-group-item list-group-item-secondary btn">
-                        <button class="btn">Log In</button>
-                    </li>
-                    <li class="nav-item list-group-item list-group-item-secondary btn">
-                        <button class="btn">Profile</button>
-                    </li>
-                </ul>
-            </nav>
-            <main class="col-7">
-                <h3>Account general configuration</h3>
+            <main class="container">
+                <div class="mx-4 px-4">
+                    <h3>Account general configuration</h3>
+                    <form name="formUpdateUser" id="formUpdateUser" action="/" method="POST">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Username:</label>
+                            <div class="d-flex">
+                                <input type="text" class="form-control" name="username" id="username" value="<?php echo $_SESSION['user']['username']?>" disabled>
+                                <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <div class="d-flex">
+                                <input type="text" class="form-control" name="email" id="email" value="<?php echo $_SESSION['user']['email']?>" disabled>
+                                <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="modal-update-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="container">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content px-4">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Password:</label>
+                                            <input class="form-control" name="password" id="password"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="col-form-label">Confirm Password:</label>
+                                            <input class="form-control" name="password-confirm" id="password-confirm"></input>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-user" value="Save">
+                                            <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-right pt-3">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-user">Save</button>
+                            <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <?php /*
                 <div class="modal-body">
                     <form name="formUpdateUser" id="formUpdateUser" action="/" method="POST">
                       <ul id="update-login" class="list-group list-group-flush">
@@ -60,7 +99,8 @@
                          <button type="button" class="btn btn-danger" class="close" data-dismiss="modal" aria-label="Close">Cancel</button>
                       </div>
                     </form>
-                 </div>
+                 </div>*/
+                 ?>
             </main>
         </div>
     </body>
