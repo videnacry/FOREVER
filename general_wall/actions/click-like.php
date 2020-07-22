@@ -3,7 +3,7 @@
 require("../../src/php/functions.php");
 
 if($_POST){
-
+/*
    $post = findItem("../../JSON/posts.json", "id", $_POST["post-id"]);
    if($post){
       removeItemOfJson("../../JSON/posts.json", $post);
@@ -16,4 +16,7 @@ if($_POST){
       addItemInJson("../../JSON/posts.json", $post);
       echo "ok";
    }
+   */
 }
+
+//THIS FUNCTION DESTROYS posts.json, IT NEEDS TO BE REWORKED. visit teams for more information
