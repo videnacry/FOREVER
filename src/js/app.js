@@ -3,6 +3,10 @@ let POST_GLOBAL_SIZE = 0;
 
 $(document).ready(() => loadPosts());
 
+$('#home-redirect').click(function(){
+    location.href = "../general_wall/"
+})
+
 if (document.getElementById("profile")) {
     //-----------------------------------Modal to add a post----------------------------------//
     const closeModals = document.getElementById("close-modals");
