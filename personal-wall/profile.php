@@ -4,8 +4,9 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <title>Profile</title>
-        <link rel="stylesheet" href="..\node_modules\bootstrap\dist\css\bootstrap.css"/>
         <script src="..\node_modules\jquery\dist\jquery.js"></script>
+        <link rel="stylesheet" href="..\node_modules\bootstrap\dist\css\bootstrap.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
         <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/de217cab6a.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="..\src\css\style.css"/>
