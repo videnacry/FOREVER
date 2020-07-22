@@ -176,6 +176,9 @@ $("#post").click(e => {
     const text = $("#modal-post-box").find("textarea").val();
     const multimedia = $("#img-new-post").attr("src");
 
+    console.log(text.length, multimedia.length)
+    if(text.length == 0 && multimedia.length == 0) return;
+
     $.post("../general_wall/newPost.php", {
         text: text,
         image: multimedia
