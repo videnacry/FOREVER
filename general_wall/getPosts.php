@@ -16,7 +16,7 @@ for($i = $_POST["index"]; $i < $_POST["index"] + 10; $i++) {
     $post->dateFormated = $json[$i]->created;
     $post->content = $json[$i]->content;
     $post->likes = $json[$i]->likes;
-    $post->comments = 0; //This part is 0 until the COMMENTS CODE is made and there is something to count
+    $post->comments = $json[$i]->comments;
 
     array_push($data, $post);
     if($i+1 == count($json)) break;

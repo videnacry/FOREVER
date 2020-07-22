@@ -30,6 +30,7 @@ $jsonPOST->image_id = $jsonIMG->id;
 $jsonPOST->created = date("F jS, Y");
 $jsonPOST->content = $_POST["text"];
 $jsonPOST->likes = 0;
+$jsonPOST->comments = 0;
 
 array_unshift($json2, $jsonPOST);
 file_put_contents("../JSON/posts.json", json_encode($json2));
