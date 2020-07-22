@@ -131,8 +131,10 @@ function loadPosts(index=0) {
         for(const post of posts) {
             $(".post-wrapper").append(`
             <div class="post-container border rounded p-3 mb-3 shadow" data-postID="${post.id}">
+               <div class="w-100 text-center">
                 <img src="${post.postImage}" alt=""
                     class="img-fluid border ">
+               </div>
                 <div class="post-content-container p-3 mt-3 border rounded">
                     <div class="row mx-auto">
                         <div class="float-left p-0 mr-3">
@@ -156,7 +158,7 @@ function loadPosts(index=0) {
                 <div class="row mt-2 px-3 justify-content-end">
                     <div class="num-likes mx-1">
                         <p class="m-0 d-inline">${post.likes}</p>
-                        <i class="far fa-heart"></i>
+                        <i class="far fa-heart icon-like" data-postID="${post.id}"></i>
                         <!-- <i class="fas fa-heart"></i> -->
                     </div>
                     <div class="num-comments mx-1">
@@ -247,3 +249,39 @@ $("#post-image").change(function () {
         $('#img-new-post').addClass('d-none');
     }
 });
+
+
+/* ------ LIKE AND COMMENT ICONS ------ */
+
+$(".post-wrapper").on("click", ".icon-like", function(){
+   $(this).toggleClass("active far fas")
+   clickLike($(this))
+})
+
+function clickLike(heart){
+   let count = parseInt($(heart).prev().text())
+   let data
+
+   if($(heart).hasClass("active")){
+      $(heart).prev().text(++count)
+      data = {
+         "post-id" : $(heart).attr("data-postid"),
+         "like" : "add"
+      }
+   }else{
+      $(heart).prev().text(--count)
+      data = {
+         "post-id" : $(heart).attr("data-postid"),
+         "like" : "remove"
+      }
+   }
+
+   $.ajax({
+      url: "../general_wall/actions/click-like.php",
+      method: "POST",
+      data: data,
+      success: function (response) {
+          console.log(response);
+      }
+  })
+}

@@ -4,13 +4,13 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8 p-0">
       <!-- Input for new post -->
-      <div id="modal-post-box" class="border border-secondary p-3 shadow mb-3">
+      <div id="modal-post-box" class="border rounded p-3 shadow mb-3">
         <img src="" alt=""
-          class="img-fluid border border-secondary mb-3 d-none" id="img-new-post">
+          class="img-fluid border mb-3 d-none" id="img-new-post">
         <div class="row mx-0">
           <!-- <div contenteditable="true" data-placeholder="What are your thoughts?" class="border border-secondary p-3 rounded w-100 text-secondary" id="post-box">
                 </div> -->
-          <textarea name="" id="" cols="100" rows="3" class="border border-secondary p-3 rounded"
+          <textarea name="" id="" cols="100" rows="3" class="border rounded p-3 rounded"
             placeholder="What are your thoughts?"></textarea>
         </div>
         <div class="row mx-0 mt-2 d-flex justify-content-between align-items-start">
@@ -19,11 +19,11 @@
                     <i class="far fa-image"></i>
                   </button> -->
             <div class="custom-file w-25" id="img-btn-cont">
-              <input type="file" class="custom-file-input outline-primary" id="post-image" name="post-image"
+              <input type="file" class="d-none" id="post-image" name="post-image"
                 accept="image/png, image/jpeg">
-              <label class="custom-file-label btn mr-1 mb-0 border border-primary" for="post-image"
+              <label class="d-block btn btn-outline-primary mr-1 mb-0 border border-primary" for="post-image"
                 id="post-image-label">
-                <i class="far fa-image text-primary"></i>
+                <i class="far fa-image"></i>
               </label>
             </div>
             <div class="gif-cont">
