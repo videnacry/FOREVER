@@ -18,7 +18,7 @@ if (isset($_POST)) {
       }
    }
    $userCompareUserName = $usersData[findIndex($usersData, "username", $_POST["username"])];
-   if ($userCompareUserName["id"] != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]) {
+   if ($userCompareUserName->{'id'} != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]) {
       echo json_encode([
          "type" => "error",
          "input" => "email",

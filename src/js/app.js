@@ -103,13 +103,17 @@ function getData(filters, url, callback) {
 
 $("#formUpdateUser").submit(function (e) {
     e.preventDefault();
+    $(this).find('input').prop("disabled",false)
     data = $(this).serialize();
     $.ajax({
         method: "POST",
         url: "control-data/update-validation.php",
         data: data,
-        success: function (data) {},
+        success: function (data) {console.log(data)},
     });
+    
+    $(this).find('input').prop("disabled",true)
+    $(this).find('input[type=submit]').prop("disabled",false)
 });
 
 //----------------------------- General wall ----------------------------------//
