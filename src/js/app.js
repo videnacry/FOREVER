@@ -132,7 +132,7 @@ function loadPosts(index = 0) {
             <div class="post-container border rounded p-3 mb-3 shadow" data-postID="${post.id}">
                <div class="w-100 text-center">
                 <img src="${post.postImage}" alt=""
-                    class="img-fluid border ">
+                    class="img-fluid border w-100">
                </div>
                 <div class="post-content-container p-3 mt-3 border rounded">
                     <div class="row mx-auto">
