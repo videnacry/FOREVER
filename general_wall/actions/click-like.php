@@ -1,22 +1,30 @@
 <?php
-
+session_start();
 require("../../src/php/functions.php");
 
 if($_POST){
-/*
-   $post = findItem("../../JSON/posts.json", "id", $_POST["post-id"]);
-   if($post){
-      removeItemOfJson("../../JSON/posts.json", $post);
-      $num = (int)$post["likes"];
-      if($_POST["like"] == "add"){
-         $post["likes"] = ++$num;
-      }else{
-         $post["likes"] = --$num;
-      }
-      addItemInJson("../../JSON/posts.json", $post);
-      echo "ok";
-   }
-   */
-}
+   $arrayPosts = json_decode(file_get_contents("../../JSON/posts.json"));
+   $indexPosts = findIndex($arrayPosts, "id", $_POST["post-id"]);
 
-//THIS FUNCTION DESTROYS posts.json, IT NEEDS TO BE REWORKED. visit teams for more information
+   $arrayLikes = json_decode(file_get_contents("../../JSON/likes.json"));
+   $index = findIndex($arrayLikes, "user_id", $_SESSION["loggedUserID"]);
+
+   if($arrayPosts[$indexPosts]){
+
+      $num = (int)$arrayPosts[$indexPosts]->likes;
+      if($_POST["like"] == "add"){
+         $arrayPosts[$indexPosts]->likes = ++$num;
+
+         if($arrayLikes[$index]){
+            $arrayLikes[$index]->posts[] = $_POST["post-id"];
+         }
+      }else{
+         $arrayPosts[$indexPosts]->likes = --$num;
+         if($arrayLikes[$index]){
+            array_splice($arrayLikes[$index]->posts, array_search($_POST["post-id"],$arrayLikes[$index]->posts), 1);
+         }
+      }
+   }
+   updateJson("../../JSON/posts.json", $arrayPosts);
+   updateJson("../../JSON/likes.json", $arrayLikes);
+}

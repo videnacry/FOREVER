@@ -130,13 +130,12 @@ function loadPosts(index = 0) {
             $(".post-container").remove();
             POST_GLOBAL_SIZE = posts[0].id;
         }
-
         for (const post of posts) {
             $(".post-wrapper").append(`
             <div class="post-container border rounded p-3 mb-3 shadow" data-postID="${post.id}">
                <div class="w-100 text-center">
                 <img src="${post.postImage}" alt=""
-                    class="img-fluid border ">
+                    class="img-fluid border w-100">
                </div>
                 <div class="post-content-container p-3 mt-3 border rounded">
                     <div class="row mx-auto">
@@ -161,7 +160,7 @@ function loadPosts(index = 0) {
                 <div class="row mt-2 px-3 justify-content-end">
                     <div class="num-likes mx-1">
                         <p class="m-0 d-inline">${post.likes}</p>
-                        <i class="far fa-heart icon-like" data-postID="${post.id}"></i>
+                        <i class="${post.isLike ? "fas" : "far"} fa-heart icon-like ${post.isLike}" data-postID="${post.id}"></i>
                         <!-- <i class="fas fa-heart"></i> -->
                     </div>
                     <div class="num-comments mx-1">
@@ -286,31 +285,28 @@ function clickLike(heart) {
     let count = parseInt($(heart).prev().text());
     let data;
 
-    if ($(heart).hasClass("active")) {
-        $(heart)
-            .prev()
-            .text(++count);
-        data = {
-            "post-id": $(heart).attr("data-postid"),
-            like: "add",
-        };
-    } else {
+    if (!$(heart).hasClass("active")) {
         $(heart)
             .prev()
             .text(--count);
         data = {
             "post-id": $(heart).attr("data-postid"),
-            like: "remove",
+            "like": "remove",
+        };
+    } else {
+        $(heart)
+            .prev()
+            .text(++count);
+        data = {
+            "post-id": $(heart).attr("data-postid"),
+            "like": "add",
         };
     }
 
     $.ajax({
         url: "../general_wall/actions/click-like.php",
         method: "POST",
-        data: data,
-        success: function (response) {
-            console.log(response);
-        },
+        data: data
     });
 }
 
@@ -452,13 +448,13 @@ function createInputComment() {
     textArea.appendTo(textCont);
 
     let buttonCont = $('<div>');
-    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start btn-new-comment');
+    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start');
     buttonCont.appendTo(wrapper);
     let buttonWrapper = $('<div>');
     buttonWrapper.addClass('buttons-block-2');
     buttonWrapper.appendTo(buttonCont);
     let button = $('<button>');
-    button.addClass('btn btn-primary');
+    button.addClass('btn btn-primary btn-new-comment');
     button.attr('type', 'submit');
     button.text('Reply');
     button.appendTo(buttonWrapper);

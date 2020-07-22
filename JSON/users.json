@@ -5,7 +5,7 @@
         "email": "kalipo99@gmail.com",
         "password": "MegaHardPassword99",
         "description": "",
-        "registered": 1000000000,
+        "registered": 100000000,
         "main_picture_id": 1
     },
     {
@@ -14,7 +14,16 @@
         "email": "rodriguezDeLaPrueba@gmail.com",
         "password": "security",
         "description": "",
-        "registered": 1595404653,
+        "registered": 100000000,
+        "main_picture_id": 0
+    },
+    {
+        "id": 2,
+        "username": "ezequiel",
+        "email": "lala@lala.com",
+        "password": "111111111",
+        "description": "",
+        "registered": 100000000,
         "main_picture_id": 0
     }
 ]
