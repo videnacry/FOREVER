@@ -1,10 +1,13 @@
 [{
-   "id": 0,
-   "user_id": 0,
-   "posts": [{
-      "post_id": 0
-   }],
-   "images": [{
-      "image_id": 0
-   }]
-}]
+      "id": 0,
+      "user_id": 0,
+      "posts": [],
+      "images": []
+   },
+   {
+      "id": 0,
+      "user_id": 1,
+      "posts": [],
+      "images": []
+   }
+]
