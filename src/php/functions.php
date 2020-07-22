@@ -8,7 +8,7 @@
 function getData(string $filePath)
 {
    $data = file_get_contents($filePath);
-   return json_decode($data);
+   return json_decode($data, true);
 }
 
 /**
