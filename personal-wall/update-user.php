@@ -14,11 +14,11 @@
                <form name="formUpdateUser" id="formUpdateUser" action="/" method="POST">
                   <div class="form-group">
                      <label for="recipient-name" class="col-form-label">Username:</label>
-                     <input type="text" class="form-control" name="username" id="username" value="">
+                     <input type="text" class="form-control" name="username" id="username" value="<?php echo $_SESSION['user']['username']?>">
                   </div>
                   <div class="form-group">
                      <label for="recipient-name" class="col-form-label">Email:</label>
-                     <input type="text" class="form-control" name="email" id="email" value="">
+                     <input type="text" class="form-control" name="email" id="email" value="<?php echo $_SESSION['user']['email']?>">
                   </div>
                   <div class="form-group">
                      <label for="message-text" class="col-form-label">Password:</label>
