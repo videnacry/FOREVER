@@ -5,7 +5,6 @@ let POST_GLOBAL_USER = "";
 
 $(document).ready(() => {
     $.get("../src/php/getLoggedUserID.php", data => {
-        console.log(data)
         POST_GLOBAL_USER = JSON.parse(data).id;
         loadPosts(POST_GLOBAL_INDEX, POST_GLOBAL_PROFILE)
     })
@@ -150,6 +149,12 @@ function loadPosts(index = 0, profile = false) {
         profile: profile
     }, (data) => {
         const posts = JSON.parse(data);
+
+        if(posts.length == 0) { 
+            POST_GLOBAL_INDEX = 0;
+            $("#more-posts-btn").hide();
+            return;
+        }
 
         if (index < 10) {
             $(".post-container").remove();
