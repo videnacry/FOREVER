@@ -1,9 +1,24 @@
-[{
-   "id": 0,
-   "username": "Mr. Admin",
-   "email": "kalipo99@gmail.com",
-   "password": "MegaHardPassword99",
-   "description": "",
-   "registered": "Time is relative",
-   "main_picture_id": 1
-}]
+[
+   {
+      "id": 0,
+      "username": "Mr. Admin",
+      "email": "kalipo99@gmail.com",
+      "password": "MegaHardPassword99",
+      "description": "",
+      "registered": "Time is relative",
+      "main_picture_id": 1
+   },
+   {
+      "id": 1,
+      "username": "ElTetePrueba",
+      "email": "rodriguezDeLaPrueba@gmail.com",
+      "password": "security",
+      "description": "",
+      "registered": {
+         "date": "2020-07-22 09:51:12.707729",
+         "timezone_type": 3,
+         "timezone": "Europe\/Berlin"
+      },
+      "main_picture_id": 0
+   }
+]
