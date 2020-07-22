@@ -13,7 +13,7 @@
                     <h3><i class="fas fa-user text-light"></i></h3>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="profile.php">Profile</a>
+                    <a id="profile-redirect" class="dropdown-item" href="profile.php">Profile</a>
                     <a class="dropdown-item" href="configuration.php">Update information</a>
                     <div class="dropdown-divider"></div>
                     <form action="../login/forms/logout.php" method="get">

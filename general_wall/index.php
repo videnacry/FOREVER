@@ -18,7 +18,7 @@
   <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 </head>
-<body>
+<body id="general-wall">
     <?php
         include '../personal-wall/header.php';
         include 'post_modal.php';

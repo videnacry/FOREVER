@@ -3,6 +3,8 @@ let POST_GLOBAL_SIZE = 0;
 
 $(document).ready(() => loadPosts());
 
+//---------------------------------Home redirect button in header----------------------------//
+
 $('#home-redirect').click(function(){
     location.href = "../general_wall/"
 })
@@ -46,6 +48,8 @@ if (document.getElementById("profile")) {
             },
         });
     });
+}else if($('#general-wall')){
+    $('#profile-redirect').attr("href","../personal-wall/profile.php")
 }
 
 //----------------------------Print posts in profile--------------------------------------//
