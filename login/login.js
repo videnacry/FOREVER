@@ -90,11 +90,11 @@ function validateRegister(t) {
             }
         ])) {
         //If validation returns true =>
-        $.post("registerUser.php", {
+        $.post("login/registerUser.php", {
             username: user.val(),
             email: email.val(),
             password: password.val()
-        }, () => location.replace("../personal-wall/profile.php"));
+        }, () => location.replace("personal-wall/profile.php"));
     }
 }
 
