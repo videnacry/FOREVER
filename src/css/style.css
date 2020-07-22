@@ -3,7 +3,28 @@
     height: 40vw;
     background-color: antiquewhite;
 }
-
+.screen-fifth{
+    width: 12vw;
+    height: 12vw;
+}
+.size-vw-30{
+    width: 30vw;
+    height: 30vw;
+}
+.height-30{
+    height: 30vw;
+}
+.portrait{
+    background-size:cover;
+    background-position:center;
+}
+.gallery{
+    overflow: auto;
+    height: 100%;
+}
+.screen-rest{
+    width: 50vw;
+}
 .width-fit{
     width:fit-content;
 }
@@ -144,9 +165,26 @@
 }
 }
 
+
+
+@media screen and (min-width : 400px){
+    .screen-fifth{
+        width: 12vw;
+        height: 12vw;
+    }
+}
 @media screen and (min-width : 800px){
     .screen-third{
         width:40vh;
         height:40vh;
+    }
+    .screen-fifth{
+        width: 12vh;
+        height: 12vh;
+    }
+}
+@media screen and (min-width : 950px){
+    .screen-rest{
+        width:70vw
     }
 }

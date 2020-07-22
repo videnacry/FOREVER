@@ -14,13 +14,16 @@
     <body>
         <?php
             session_start();
-            include "header.php";
+            include 'header.php';
         ?>
         <div class="d-flex flex-nowrap">
             <main class="container">
                 <div class="mx-4 px-4">
-                    <h3>Account general configuration</h3>
+                    <h3 class="my-4">Account general configuration</h3>
                     <form name="formUpdateUser" id="formUpdateUser" action="/" method="POST">
+                        <?php
+                            include 'gallery.php';
+                        ?>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Username:</label>
                             <div class="d-flex">
@@ -32,6 +35,13 @@
                             <label for="recipient-name" class="col-form-label">Email:</label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" name="email" id="email" value="<?php echo $_SESSION['user']['email']?>" disabled>
+                                <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Description:</label>
+                            <div class="d-flex">
+                                <input type="text" class="form-control" name="description" id="description" value="<?php echo $_SESSION['user']['description']?>" disabled>
                                 <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
                             </div>
                         </div>
