@@ -8,6 +8,15 @@
     width:fit-content;
 }
 
+.no-style{
+    border:none;
+    background: none;
+}
+
+.mt-22{
+    margin-top:-22px;
+}
+
 .all-page {
     width: 100vw;
     height: 100vh;

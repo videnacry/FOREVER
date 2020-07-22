@@ -1,5 +1,6 @@
 <?php
 $json = json_decode(file_get_contents("../JSON/users.json"));
+$date = new DateTime();
 
 $newUser = new stdClass();
 $newUser->id = $json[count($json)-1]->id + 1;
@@ -7,7 +8,7 @@ $newUser->username = $_POST["username"];
 $newUser->email = $_POST["email"];
 $newUser->password = $_POST["password"];
 $newUser->description = "";
-$newUser->registered = new DateTime();
+$newUser->registered = $date->getTimestamp();
 $newUser->main_picture_id = 0;
 
 array_push($json, $newUser);

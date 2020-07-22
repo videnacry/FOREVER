@@ -29,7 +29,7 @@ function validateLogin(t) {
         }, data => {
             const error = $(`<div class='alert alert-danger'>${data}</div>`);
 
-            if (data == "SUCCESS") location.replace(".")
+            if (data == "SUCCESS") location.replace("index.php")
             else {
                 if (data.includes("email")) usermail.after(error);
                 else password.after(error);
@@ -94,7 +94,7 @@ function validateRegister(t) {
             username: user.val(),
             email: email.val(),
             password: password.val()
-        }, () => location.replace("."));
+        }, () => location.replace("index.php"));
     }
 }
 

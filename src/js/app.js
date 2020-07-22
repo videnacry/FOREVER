@@ -3,11 +3,18 @@ let POST_GLOBAL_SIZE = 0;
 
 $(document).ready(() => loadPosts());
 
+
 if (document.getElementById("profile")) {
     //-----------------------------------Modal to add a post----------------------------------//
     const closeModals = document.getElementById("close-modals");
     const modalPost = document.getElementById("modal-post");
     const newPost = document.getElementById("new-post");
+
+    //---------------------------------Home redirect button in header----------------------------//
+
+    $('#home-redirect').click(function(){
+        location.href = "../general_wall/"
+    })
 
     $(modalPost).css({
         display: "none",
@@ -42,6 +49,37 @@ if (document.getElementById("profile")) {
             },
         });
     });
+}else if(document.getElementById('general-wall')){
+    $('#profile-redirect').attr("href","../personal-wall/profile.php")
+    
+    //---------------------------------Home redirect buttons in header----------------------------//
+
+    $('#home-redirect').click(function(){
+        location.href = "index.php"
+    })
+
+    $('#update-redirect').attr("href","../personal-wall/configuration.php")  
+}else{
+    
+    //---------------------------------Home redirect button in header----------------------------//
+
+    $('#home-redirect').click(function(){
+        location.href = "../general_wall/"
+    })
+}
+
+if($('#update-login')){
+    $('#update-login').children('li').children('button').click(function(){
+        const parent = event.currentTarget.parentElement
+        const child = $(parent).children('div').children('input')
+        if(child.prop("disabled")){
+            child.prop("disabled",false)  
+        }else{
+            child.prop("disabled",true)
+        }
+        child.toggleClass("text-muted")  
+        child.focus()
+    })
 }
 
 //----------------------------Print posts in profile--------------------------------------//
@@ -77,7 +115,7 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
-function loadPosts(index=0) {
+function loadPosts(index = 0) {
     POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", {
@@ -177,9 +215,7 @@ function loadGifs(search = "") {
             $(".gif-element").remove();
             console.log(gifs);
             for (const gif of gifs)
-                box.append(
-                    `<img class="gif-element" src="${gif.images.preview_gif.url}" data-src="${gif.images.downsized.url}" alt="${gif.title}" Width="170px">`
-                );
+                box.append(`<img class="gif-element" src="${gif.images.preview_gif.url}" data-src="${gif.images.downsized.url}" alt="${gif.title}" Width="170px">`);
 
             $(".gif-element").click((e) => {
                 $("#img-new-post").attr("src", "");
@@ -197,7 +233,7 @@ $("#post").click((e) => {
     const text = $("#modal-post-box").find("textarea").val();
     const multimedia = $("#img-new-post").attr("src");
 
-    if(text.length == 0 && multimedia.length == 0) return;
+    if (text.length == 0 && multimedia.length == 0) return;
 
     $.post("../general_wall/newPost.php", {
         text: text,
@@ -295,9 +331,9 @@ $(".post-wrapper").on("click", ".fa-comment-alt", function (e) {
                 origin: origin,
             },
             (data) => {
-                console.log(data);
+                // console.log(data);
                 let myComments = JSON.parse(data);
-                console.log(myComments);
+                // console.log(myComments);
                 for (let i = 0; i < myComments.length; i++) {
                     let myComment = createComment(myComments[i]);
                     myComment.insertAfter($(e.target).parent().parent().next());
@@ -331,16 +367,15 @@ $(".post-wrapper").on("click", ".btn-new-comment", function (e) {
                 origin: "posts"
             },
             (data) => {
-                console.log(data);
-                // let myComments = JSON.parse(data);
-                // console.log(myComments);
-                // for (let i = 0; i < myComments.length; i++) {
-                //     let myComment = createComment(myComments[i]);
-                //     myComment.insertAfter($(e.target).parent().parent().next());
-                // }
+                // console.log(data);
+                let newComment = JSON.parse(data);
+                // console.log(newComment);
+                let commentBox = createComment(newComment);
+                commentBox.insertAfter($(e.target).parent().parent().parent());
+                let numComments = parseInt($(e.target).parent().parent().parent().prev().children().eq(1).children().eq(0).text());
+                $(e.target).parent().parent().parent().prev().children().eq(1).children().eq(0).text(numComments + 1);
             }
         );
-
         // Clear text area at the end of the process
         $(e.target).parent().parent().prev().children().eq(0).val('');
     }
@@ -378,8 +413,11 @@ function createComment(commentObj) {
     name.text(commentObj.authorName);
     name.appendTo(nameContDiv);
     let creation = $("<p>");
-    creation.addClass("m-0");
-    creation.text(commentObj.creationDate);
+    // creation.addClass("m-0");
+    let small = $('<small>');
+    small.text(commentObj.creationDate);
+    small.appendTo(creation);
+    // creation.text(commentObj.creationDate);
     creation.appendTo(nameContDiv);
     let commentDiv = $("<div>");
     commentDiv.addClass("row mx-auto mt-3");
@@ -399,9 +437,9 @@ function createInputComment() {
     textCont.addClass('row mx-0');
     textCont.appendTo(wrapper);
     let textArea = $('<textarea>');
-    textArea.addClass('border p-3 rounded');
+    textArea.addClass('border p-2 rounded');
     textArea.attr('cols', '100');
-    textArea.attr('rows', '3');
+    textArea.attr('rows', '2');
     textArea.attr('placeholder', 'Write a comment...');
     textArea.appendTo(textCont);
 
