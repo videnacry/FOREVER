@@ -430,7 +430,7 @@ $(".post-wrapper").on("click", ".btn-new-comment", function (e) {
 
 function createComment(commentObj) {
     let wrapper = $("<div>");
-    wrapper.addClass("border-left border-right border-bottom p-3 comment");
+    wrapper.addClass("border mt-2 p-3 comment");
     let innerCont = $("<div>");
     innerCont.addClass("comment-content-container p-3 border");
     innerCont.appendTo(wrapper);
@@ -476,7 +476,7 @@ function createComment(commentObj) {
 
 function createInputComment() {
     let wrapper = $('<div>');
-    wrapper.addClass('border mt-3 p-3 input-comment');
+    wrapper.addClass('border mt-3 p-3 input-comment bg-light');
 
     let textCont = $('<div>');
     textCont.addClass('row mx-0');
