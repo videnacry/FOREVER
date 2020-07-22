@@ -1,5 +1,13 @@
 [
     {
+        "id": 5,
+        "author_id": 1,
+        "image_id": -1,
+        "created": "July 22nd, 2020",
+        "content": "sOY NuevVo",
+        "likes": 0
+    },
+    {
         "id": 4,
         "author_id": 0,
         "image_id": 3,
@@ -10,7 +18,7 @@
     {
         "id": 3,
         "author_id": 0,
-        "image_id": 1,
+        "image_id": 2,
         "created": "July 21st, 2020",
         "content": "Me gustan los zorros, pero tambi\u00e9n las patatas",
         "likes": 0
@@ -34,7 +42,7 @@
     {
         "id": 0,
         "author_id": 0,
-        "image_id": 0,
+        "image_id": 1,
         "created": "July 21st, 2020",
         "content": "We are online!",
         "likes": 0
