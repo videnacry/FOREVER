@@ -18,7 +18,7 @@ if (isset($_POST)) {
       }
    }
    $userCompareUserName = $usersData[findIndex($usersData, "username", $_POST["username"])];
-   if ($userCompareUserName["id"] != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]) {
+   if ($userCompareUserName->id != $_SESSION["loggedUserID"] && $userCompareUserName->username == $_POST["username"]) {
       echo json_encode([
          "type" => "error",
          "input" => "email",
@@ -38,7 +38,7 @@ if (isset($_POST)) {
    }
 
    $userCompareEmail = $usersData[findIndex($usersData, "email", $_POST["email"])];
-   if ($userCompareEmail && $userCompareEmail["id"] != $_SESSION["user"]["id"] && $userCompareEmail["email"] == $_POST["email"]) {
+   if ($userCompareEmail && $userCompareEmail->id != $_SESSION["loggedUserID"] && $userCompareEmail->email == $_POST["email"]) {
       echo json_encode([
          "type" => "error",
          "input" => "email",
@@ -68,12 +68,15 @@ if (isset($_POST)) {
 
    //Update User
 
-   $usersData[findIndex($usersData, "id", $_SESSION["user"]["id"])]->username = $_POST["username"];
-   $usersData[findIndex($usersData, "id", $_SESSION["user"]["id"])]->email = $_POST["email"];
+   $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->username = $_POST["username"];
+   $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->email = $_POST["email"];
    updateJson("../../JSON/users.json", $usersData);
 
 
-   $_SESSION["user"] = findItem("../../JSON/users.json", "id", $_SESSION["user"]["id"]);
+   $_SESSION["user"] = findItem("../../JSON/users.json", "id", $_SESSION["loggedUserID"]);
+   $_SESSION["loggedUserID"] = $_SESSION["user"]["id"];
+   unset($_SESSION["user"]["id"]);
+   unset($_SESSION["user"]["password"]);
    echo json_encode([
       "type" => "ok",
       "userData" => $_SESSION["user"]

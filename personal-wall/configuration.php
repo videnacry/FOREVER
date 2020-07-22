@@ -17,10 +17,13 @@
             include "header.php";
         ?>
         <div class="d-flex flex-nowrap">
-            <nav class="navbar navbar-dark">
+            <nav class="navbar navbar-dark flex-column">
                 <ul class="navbar-nav list-group text-light flex-column">
-                    <li class="nav-item list-group-item list-group-item-secondary">
-                        <button class="btn">General</button>
+                    <li class="nav-item list-group-item list-group-item-secondary btn">
+                        <button class="btn">Log In</button>
+                    </li>
+                    <li class="nav-item list-group-item list-group-item-secondary btn">
+                        <button class="btn">Profile</button>
                     </li>
                 </ul>
             </nav>
