@@ -16,6 +16,7 @@
 
         </div>
         <?php
+            session_start();
             include 'header.php';
             include '../general_wall/post_modal.php';
             include 'update-user.php';
