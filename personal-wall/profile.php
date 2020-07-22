@@ -22,7 +22,7 @@
         ?>
         <div id="profile" class="">
             <div class="d-flex justify-content-center py-4">
-                <div id="profile-photo" class="rounded-circle vw-third"></div>
+                <div id="profile-photo" class="rounded-circle screen-third"></div>
             </div>
             <div class="d-flex justify-content-center py-4">
                 <h1 id="profile-name">Beronidas</h1>
