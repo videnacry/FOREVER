@@ -444,13 +444,13 @@ function createInputComment() {
     textArea.appendTo(textCont);
 
     let buttonCont = $('<div>');
-    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start btn-new-comment');
+    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start');
     buttonCont.appendTo(wrapper);
     let buttonWrapper = $('<div>');
     buttonWrapper.addClass('buttons-block-2');
     buttonWrapper.appendTo(buttonCont);
     let button = $('<button>');
-    button.addClass('btn btn-primary');
+    button.addClass('btn btn-primary btn-new-comment');
     button.attr('type', 'submit');
     button.text('Reply');
     button.appendTo(buttonWrapper);
