@@ -311,7 +311,6 @@ $(".post-wrapper").on("click", ".fa-comment-alt", function (e) {
     }
 });
 
-
 // Event listeners to toggle comment icon
 $(".post-wrapper").on("mouseenter", ".fa-comment-alt", function () {
     $(this).removeClass("far");
@@ -321,6 +320,37 @@ $(".post-wrapper").on("mouseleave", ".fa-comment-alt", function () {
     $(this).removeClass("fas");
     $(this).addClass("far");
 });
+
+// Event listener to add new comment
+$(".post-wrapper").on("click", ".btn-new-comment", function (e) {
+    e.preventDefault();
+    let textAreaVal = $(e.target).parent().parent().prev().children().eq(0).val();
+    if (textAreaVal != "") {
+        let postId = $(e.target).parent().parent().parent().parent().data('postid');
+        let postContent = textAreaVal;
+        $.post(
+            "../general_wall/newComment.php", {
+                postId: postId,
+                postContent: postContent,
+                origin: "posts"
+            },
+            (data) => {
+                console.log(data);
+                // let myComments = JSON.parse(data);
+                // console.log(myComments);
+                // for (let i = 0; i < myComments.length; i++) {
+                //     let myComment = createComment(myComments[i]);
+                //     myComment.insertAfter($(e.target).parent().parent().next());
+                // }
+            }
+        );
+
+        // Clear text area at the end of the process
+        $(e.target).parent().parent().prev().children().eq(0).val('');
+    }
+})
+
+// Helper functions
 
 function createComment(commentObj) {
     let wrapper = $("<div>");
@@ -380,7 +410,7 @@ function createInputComment() {
     textArea.appendTo(textCont);
 
     let buttonCont = $('<div>');
-    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start');
+    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start btn-new-comment');
     buttonCont.appendTo(wrapper);
     let buttonWrapper = $('<div>');
     buttonWrapper.addClass('buttons-block-2');
