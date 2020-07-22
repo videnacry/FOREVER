@@ -94,8 +94,11 @@
                         </div> -->'
                         ?>
                 </div>
-                <div class="btn" id="more-posts-btn">Load more</div>
+                
             </div>
+        </div>
+        <div class="row">
+            <div class="btn btn-primary mx-auto" id="more-posts-btn">Load more</div>
         </div>
     </div>
 </main>

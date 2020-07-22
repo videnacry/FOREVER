@@ -1,4 +1,5 @@
 let POST_GLOBAL_INDEX = 0;
+let POST_GLOBAL_SIZE = 0;
 
 $(document).ready(() => loadPosts());
 
@@ -81,11 +82,14 @@ $("#formUpdateUser").submit(function (e) {
 
 // Load posts
 function loadPosts(index=0) {
-    if(index < 10) $(".post-container").remove();
-    POST_GLOBAL_INDEX = 10;
+    POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", { index: index }, data => {
         const posts = JSON.parse(data);
+        if(index < 10) {
+            $(".post-container").remove();
+            POST_GLOBAL_SIZE = posts[0].id;
+        }
 
         for(const post of posts) {
             $(".post-wrapper").append(`
@@ -137,6 +141,7 @@ function loadPosts(index=0) {
 //Load more posts button
 $("#more-posts-btn").click(e => {
     loadPosts(POST_GLOBAL_INDEX);
+    if(POST_GLOBAL_INDEX > POST_GLOBAL_SIZE) $("#more-posts-btn").hide()
 })
 
 // Toggle GIF modal
@@ -191,7 +196,10 @@ $("#post").click(e => {
         text: text,
         image: multimedia
     }, data => {
+        POST_GLOBAL_INDEX = 0;
+        $("#more-posts-btn").show();
         loadPosts();
+        
         $("#modal-post-box").find("textarea").val("");
         $("#img-new-post").attr("src", "");
     })
