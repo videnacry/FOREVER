@@ -432,9 +432,9 @@ function createInputComment() {
     textCont.addClass('row mx-0');
     textCont.appendTo(wrapper);
     let textArea = $('<textarea>');
-    textArea.addClass('border p-3 rounded');
+    textArea.addClass('border p-2 rounded');
     textArea.attr('cols', '100');
-    textArea.attr('rows', '3');
+    textArea.attr('rows', '2');
     textArea.attr('placeholder', 'Write a comment...');
     textArea.appendTo(textCont);
 
