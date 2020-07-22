@@ -1,7 +1,11 @@
-.vw-third {
-    width: 30vw;
-    height: 30vw;
+.screen-third {
+    width: 40vw;
+    height: 40vw;
     background-color: antiquewhite;
+}
+
+.width-fit{
+    width:fit-content;
 }
 
 .all-page {
@@ -124,3 +128,9 @@
 }
 }
 
+@media screen and (min-width : 800px){
+    .screen-third{
+        width:40vh;
+        height:40vh;
+    }
+}

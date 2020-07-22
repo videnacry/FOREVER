@@ -4,8 +4,9 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <title>Profile</title>
-        <link rel="stylesheet" href="..\node_modules\bootstrap\dist\css\bootstrap.css"/>
         <script src="..\node_modules\jquery\dist\jquery.js"></script>
+        <link rel="stylesheet" href="..\node_modules\bootstrap\dist\css\bootstrap.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
         <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="https://kit.fontawesome.com/de217cab6a.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="..\src\css\style.css"/>
@@ -21,7 +22,7 @@
         ?>
         <div id="profile" class="">
             <div class="d-flex justify-content-center py-4">
-                <div id="profile-photo" class="rounded-circle vw-third"></div>
+                <div id="profile-photo" class="rounded-circle screen-third"></div>
             </div>
             <div class="d-flex justify-content-center py-4">
                 <h1 id="profile-name">Beronidas</h1>
@@ -31,7 +32,7 @@
             </div>
             <div class="d-flex d-flex flex-row-reverse">
                 <button type="button" data-toggle="modal" data-target="#modal-update-user" class="btn btn-secondary mx-2">
-                    <i class="fas fa-pencil-alt"></i> Editar perfil
+                    <i class="fas fa-pencil-alt"></i> Update profile
                 </button>
                 <button id="new-post" class="btn btn-secondary mx-2"><i class="fas fa-plus-square"></i> Awesome post</button>
             </div>
