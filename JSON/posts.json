@@ -2,7 +2,7 @@
     {
         "id": 12,
         "author_id": 1,
-        "image_id": 8,
+        "image_id": -1,
         "created": "July 22nd, 2020",
         "content": "I like potatoes",
         "likes": 0,
