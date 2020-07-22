@@ -12,12 +12,29 @@ function getData(string $filePath)
 }
 
 /**
- * Find item into json file return index of item or false
+ * Find item into json file
+ * @param {String} $filePath -> path of json file
+ * @param {String} $attr -> attribute to look for.
+ * @param {String} $value -> match value.
+ */
+function findItem(array $filePath, string $attr, string $value)
+{
+   $arrayData = getData($filePath);
+   foreach ($arrayData as $item) {
+      if ($item[$attr] == $value) {
+         return $item;
+      }
+   }
+   return false;
+}
+
+/**
+ * Find index into json file return index of item or false
  * @param {Array} $fileContent -> content of json file
  * @param {String} $attr -> attribute to look for.
  * @param {String} $value -> match value.
  */
-function findItem(array $fileContent, string $attr, string $value)
+function findIndex(array $fileContent, string $attr, string $value)
 {
    return array_search($value, array_column($fileContent, $attr));
 }
