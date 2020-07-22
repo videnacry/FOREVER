@@ -1,3 +1,5 @@
+let POST_GLOBAL_INDEX = 0;
+
 $(document).ready(() => loadPosts());
 
 if (document.getElementById("profile")) {
@@ -80,6 +82,7 @@ $("#formUpdateUser").submit(function (e) {
 // Load posts
 function loadPosts(index=0) {
     if(index < 10) $(".post-container").remove();
+    POST_GLOBAL_INDEX = 10;
 
     $.post("../general_wall/getPosts.php", { index: index }, data => {
         const posts = JSON.parse(data);
@@ -119,7 +122,7 @@ function loadPosts(index=0) {
                     </div>
                     <div class="num-comments mx-1">
                         <p class="m-0 d-inline">${post.comments}</p>
-                        <i class="far fa-comment-alt"></i>
+                        <i class="far fa-comment-alt" data-postID="${post.id}"></i>
                         <!-- <i class="fas fa-comment-alt"></i> -->
                     </div>
                 </div>
@@ -130,6 +133,11 @@ function loadPosts(index=0) {
 
 /**/
 }
+
+//Load more posts button
+$("#more-posts-btn").click(e => {
+    loadPosts(POST_GLOBAL_INDEX);
+})
 
 // Toggle GIF modal
 $('#gif-button').on('click', function () {
@@ -171,12 +179,12 @@ function loadGifs(search = "") {
     })
 }
 
+
 // Create new post
 $("#post").click(e => {
     const text = $("#modal-post-box").find("textarea").val();
     const multimedia = $("#img-new-post").attr("src");
 
-    console.log(text.length, multimedia.length)
     if(text.length == 0 && multimedia.length == 0) return;
 
     $.post("../general_wall/newPost.php", {
