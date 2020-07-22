@@ -1,7 +1,9 @@
 <?php
 require("../../src/php/functions.php");
 session_start();
-$_SESSION["user"] = findItem("../../JSON/users.json", "id", 0);
+// $_SESSION["user"] = findItem("../../JSON/users.json", "id", 0);
+
+$usersData = json_decode(file_get_contents("../../JSON/users.json"));
 
 if (isset($_POST)) {
    if ($_POST["username"] != $_SESSION["user"]["username"]) {
@@ -15,8 +17,8 @@ if (isset($_POST)) {
          die();
       }
    }
-   $userCompareUserName = findItem("../../JSON/users.json", "username", $_POST["username"]);
-   if($userCompareUserName["id"] != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]){
+   $userCompareUserName = $usersData[findIndex($usersData, "username", $_POST["username"])];
+   if ($userCompareUserName["id"] != $_SESSION["user"]["id"] && $userCompareUserName["username"] == $_POST["username"]) {
       echo json_encode([
          "type" => "error",
          "input" => "email",
@@ -25,7 +27,7 @@ if (isset($_POST)) {
       die();
    }
    if ($_POST["email"] != $_SESSION["user"]["email"]) {
-      if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+      if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) || empty($_POST["email"])) {
          echo json_encode([
             "type" => "error",
             "input" => "email",
@@ -35,8 +37,8 @@ if (isset($_POST)) {
       }
    }
 
-   $userCompareEmail = findItem("../../JSON/users.json", "email", $_POST["email"]);
-   if($userCompareEmail && $userCompareEmail["id"] != $_SESSION["user"]["id"] && $userCompareEmail["email"] == $_POST["email"]){
+   $userCompareEmail = $usersData[findIndex($usersData, "email", $_POST["email"])];
+   if ($userCompareEmail && $userCompareEmail["id"] != $_SESSION["user"]["id"] && $userCompareEmail["email"] == $_POST["email"]) {
       echo json_encode([
          "type" => "error",
          "input" => "email",
@@ -63,26 +65,19 @@ if (isset($_POST)) {
       die();
    }
 
-   $toUpdate = findItem("../JSON/users.json", "id", $_SESSION["user"]["id"]);
 
    //Update User
-   removeItemOfJson("../../JSON/users.json", $toUpdate);
-   $toUpdate["username"] = $_POST["username"];
-   $toUpdate["email"] = $_POST["email"];
-   addItemInJson("../../JSON/users.json", $toUpdate);
+
+   $usersData[findIndex($usersData, "id", $_SESSION["user"]["id"])]->username = $_POST["username"];
+   $usersData[findIndex($usersData, "id", $_SESSION["user"]["id"])]->email = $_POST["email"];
+   updateJson("../../JSON/users.json", $usersData);
 
 
-   $_SESSION["user"] = $toUpdate;
+   $_SESSION["user"] = findItem("../../JSON/users.json", "id", $_SESSION["user"]["id"]);
    echo json_encode([
       "type" => "ok",
       "userData" => $_SESSION["user"]
    ]);
+   
    die();
-
 }
-
-
-
-
-
-

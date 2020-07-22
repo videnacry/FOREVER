@@ -29,6 +29,36 @@ function findItem(string $filePath, string $attr, string $value)
 }
 
 /**
+ * Find index into json file return index of item or false
+ * @param {Array} $fileContent -> content of json file
+ * @param {String} $attr -> attribute to look for.
+ * @param {String} $value -> match value.
+ */
+function findIndex(array $fileContent, string $attr, string $value)
+{
+   return array_search($value, array_column($fileContent, $attr));
+}
+
+/**
+ * Update JSON file
+ * @param {String} $filePath -> path of json file
+ * @param {Array} $data -> json file content
+ */
+function updateJson(string $filePath, array $data){
+   $fileTempPath = str_replace(".json", "-temp.json", $filePath);
+   $file = $fileTempPath;
+   fopen($file, "w");
+   file_put_contents($file, json_encode($data));
+   if (!unlink($filePath)) {
+      return false;
+   } else {
+      rename($file, $filePath);
+      return true;
+   }
+}
+
+
+/**
  * Add item into a JSON file
  * @param {String} $filePath -> path of json file
  * @param {Array} $item -> Item to add in json file
