@@ -40,6 +40,25 @@ function findIndex(array $fileContent, string $attr, string $value)
 }
 
 /**
+ * Update JSON file
+ * @param {String} $filePath -> path of json file
+ * @param {Array} $data -> json file content
+ */
+function updateJson(string $filePath, array $data){
+   $fileTempPath = str_replace(".json", "-temp.json", $filePath);
+   $file = $fileTempPath;
+   fopen($file, "w");
+   file_put_contents($file, json_encode($data));
+   if (!unlink($filePath)) {
+      return false;
+   } else {
+      rename($file, $filePath);
+      return true;
+   }
+}
+
+
+/**
  * Add item into a JSON file
  * @param {String} $filePath -> path of json file
  * @param {Array} $item -> Item to add in json file
