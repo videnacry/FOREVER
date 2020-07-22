@@ -83,7 +83,6 @@ function loadPosts(index=0) {
     $.post("../general_wall/getPosts.php", {
         index: index
     }, (data) => {
-       console.log(data);
         const posts = JSON.parse(data);
         if (index < 10) {
             $(".post-container").remove();
