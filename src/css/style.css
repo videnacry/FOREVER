@@ -4,6 +4,10 @@
     background-color: antiquewhite;
 }
 
+.width-fit{
+    width:fit-content;
+}
+
 .all-page {
     width: 100vw;
     height: 100vh;
