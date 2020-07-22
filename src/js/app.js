@@ -161,29 +161,42 @@ $('.fa-comment-alt').on('click', function (e) {
     // Toggle visibility of new comment input
     if ($('#new-comment-cont').hasClass('d-none')) {
         $('#new-comment-cont').removeClass('d-none');
+
+        // Request object with required info using ajax
+        const postId = $('.fa-comment-alt').data('postid');
+        const origin = "posts";
+        $.post("../general_wall/getComments.php", {
+            postId: postId,
+            origin: origin
+        }, data => {
+            console.log(data);
+            let myComments = JSON.parse(data);
+            console.log(myComments);
+            for (let i = 0; i < myComments.length; i++) {
+                let myComment = createComment(myComments[i]);
+                myComment.insertAfter($(e.target).parent().parent().parent().next())
+            }
+        })
+
     } else {
         $('#new-comment-cont').addClass('d-none');
+        $('.comment').remove();
     }
-    // Request object with required info using ajax
-    const postId = $('.fa-comment-alt').data('postid');
-    const origin = "posts";
-    $.post("../general_wall/getComments.php", {
-        postId: postId,
-        origin: origin
-    }, data => {
-        console.log(data);
-        let myComments = JSON.parse(data);
-        console.log(myComments);
-        for (let i = 0; i < myComments.length; i++) {
-            let myComment = createComment(myComments[i]);
-            myComment.insertAfter($(e.target).parent().parent().parent().next())
-        }
-    })
+})
+
+// Event listener to toggle comment icon
+$('.fa-comment-alt').on('mouseenter', function () {
+    $(this).removeClass('far');
+    $(this).addClass('fas');
+})
+$('.fa-comment-alt').on('mouseleave', function () {
+    $(this).removeClass('fas');
+    $(this).addClass('far');
 })
 
 function createComment(commentObj) {
     let wrapper = $('<div>');
-    wrapper.addClass('border-left border-right border-bottom p-3');
+    wrapper.addClass('border-left border-right border-bottom p-3 comment');
     let innerCont = $('<div>');
     innerCont.addClass('comment-content-container p-3 border');
     innerCont.appendTo(wrapper);
