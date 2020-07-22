@@ -77,14 +77,18 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
+<<<<<<< HEAD
 function loadPosts(index=0) {
+=======
+function loadPosts(index = 0) {
+>>>>>>> 42754f5d7cdfaa0ed5c06d5c2ce5ba04290580d1
     POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", {
         index: index
     }, (data) => {
         const posts = JSON.parse(data);
-        if(index < 10) {
+        if (index < 10) {
             $(".post-container").remove();
             POST_GLOBAL_SIZE = posts[0].id;
         }
@@ -139,7 +143,7 @@ function loadPosts(index=0) {
 //Load more posts button
 $("#more-posts-btn").click(e => {
     loadPosts(POST_GLOBAL_INDEX);
-    if(POST_GLOBAL_INDEX > POST_GLOBAL_SIZE) $("#more-posts-btn").hide()
+    if (POST_GLOBAL_INDEX > POST_GLOBAL_SIZE) $("#more-posts-btn").hide()
 })
 
 // Toggle GIF modal
@@ -207,7 +211,7 @@ $("#post").click((e) => {
         POST_GLOBAL_INDEX = 0;
         $("#more-posts-btn").show();
         loadPosts();
-        
+
         $("#modal-post-box").find("textarea").val("");
         $("#img-new-post").attr("src", "");
     })
@@ -311,7 +315,6 @@ $(".post-wrapper").on("click", ".fa-comment-alt", function (e) {
     }
 });
 
-
 // Event listeners to toggle comment icon
 $(".post-wrapper").on("mouseenter", ".fa-comment-alt", function () {
     $(this).removeClass("far");
@@ -321,6 +324,37 @@ $(".post-wrapper").on("mouseleave", ".fa-comment-alt", function () {
     $(this).removeClass("fas");
     $(this).addClass("far");
 });
+
+// Event listener to add new comment
+$(".post-wrapper").on("click", ".btn-new-comment", function (e) {
+    e.preventDefault();
+    let textAreaVal = $(e.target).parent().parent().prev().children().eq(0).val();
+    if (textAreaVal != "") {
+        let postId = $(e.target).parent().parent().parent().parent().data('postid');
+        let postContent = textAreaVal;
+        $.post(
+            "../general_wall/newComment.php", {
+                postId: postId,
+                postContent: postContent,
+                origin: "posts"
+            },
+            (data) => {
+                console.log(data);
+                // let myComments = JSON.parse(data);
+                // console.log(myComments);
+                // for (let i = 0; i < myComments.length; i++) {
+                //     let myComment = createComment(myComments[i]);
+                //     myComment.insertAfter($(e.target).parent().parent().next());
+                // }
+            }
+        );
+
+        // Clear text area at the end of the process
+        $(e.target).parent().parent().prev().children().eq(0).val('');
+    }
+})
+
+// Helper functions
 
 function createComment(commentObj) {
     let wrapper = $("<div>");
@@ -380,7 +414,7 @@ function createInputComment() {
     textArea.appendTo(textCont);
 
     let buttonCont = $('<div>');
-    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start');
+    buttonCont.addClass('row mx-0 mt-2 d-flex justify-content-end align-items-start btn-new-comment');
     buttonCont.appendTo(wrapper);
     let buttonWrapper = $('<div>');
     buttonWrapper.addClass('buttons-block-2');
