@@ -16,6 +16,13 @@ file_put_contents("../JSON/users.json", json_encode($json));
 
 session_start();
 $_SESSION["loggedUserID"] = $newUser->id;
+$_SESSION["user"] = [
+    "username" => $newUser->username,
+    "email" => $newUser->email,
+    "description" => $newUser->description,
+    "registered" => $newUser->registered,
+    "pictureID" => $newUser->main_picture_id
+];
 
 $jsonLikes = json_decode(file_get_contents("../JSON/likes.json"));
 

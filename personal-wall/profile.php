@@ -22,15 +22,6 @@
             include 'update-user.php';
         ?>
         <div id="profile" class="">
-            <div class="d-flex justify-content-center py-4">
-                <div id="profile-photo" class="rounded-circle screen-third"></div>
-            </div>
-            <div class="d-flex justify-content-center py-4">
-                <h1 id="profile-name">Beronidas</h1>
-            </div>
-            <div class="d-flex justify-content-center">
-                <p id="profile-description">After some time it was discover and with it who would say for that time the consecuences.</p>
-            </div>
             <div class="d-flex d-flex flex-row-reverse">
                 <button type="button" data-toggle="modal" data-target="#modal-update-user" class="btn btn-secondary mx-2">
                     <i class="fas fa-pencil-alt"></i> Update profile

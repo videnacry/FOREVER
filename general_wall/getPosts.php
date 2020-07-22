@@ -10,7 +10,16 @@ $json = json_decode(file_get_contents("../JSON/posts.json"));
 $data = [];
 
 for($i = $_POST["index"]; $i < $_POST["index"] + 10; $i++) {
-   $user = findItem("../JSON/users.json", "id", $json[$i]->author_id);
+    $user = findItem("../JSON/users.json", "id", $json[$i]->author_id);
+
+    if($_POST["profile"] == "true") {
+        if($user["id"] != $_SESSION["loggedUserID"]) {
+            if($json[$i]->id == 0) break;
+            $_POST["index"]++;
+            continue;
+        }
+    } 
+
    $isLike;
    if($arrayLikes[$index]){
       $isLike = array_search($json[$i]->id, $arrayLikes[$index]->posts);
@@ -25,6 +34,7 @@ for($i = $_POST["index"]; $i < $_POST["index"] + 10; $i++) {
     $post = new stdClass();
     $post->id = $json[$i]->id;
     $post->userName = $user["username"];
+    $post->userID = $user["id"];
     $post->userImage = getImagePath($user["main_picture_id"]);
     $post->postImage = getImagePath($json[$i]->image_id);
     $post->dateFormated = date('F jS, Y \a\t H:i', $json[$i]->created);
@@ -32,6 +42,7 @@ for($i = $_POST["index"]; $i < $_POST["index"] + 10; $i++) {
     $post->likes = $json[$i]->likes;
     $post->isLike = $isLike;
     $post->comments = $json[$i]->comments;
+    $post->last = isset($json[$i]->first);
 
     array_push($data, $post);
     if($i+1 == count($json)) break;

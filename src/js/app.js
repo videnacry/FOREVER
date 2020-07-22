@@ -1,7 +1,15 @@
 let POST_GLOBAL_INDEX = 0;
 let POST_GLOBAL_SIZE = 0;
+let POST_GLOBAL_PROFILE = $("main").siblings("#profile").attr("id") == "profile";
+let POST_GLOBAL_USER = "";
 
-$(document).ready(() => loadPosts());
+$(document).ready(() => {
+    $.get("../src/php/getLoggedUserID.php", data => {
+        console.log(data)
+        POST_GLOBAL_USER = JSON.parse(data).id;
+        loadPosts(POST_GLOBAL_INDEX, POST_GLOBAL_PROFILE)
+    })
+});
 
 
 if (document.getElementById("profile")) {
@@ -49,6 +57,21 @@ if (document.getElementById("profile")) {
             },
         });
     });
+
+    $.get("../src/php/getLoggedUserID.php", data => {
+        const user = JSON.parse(data);
+        $("#profile").prepend(`
+            <div class="d-flex justify-content-center py-4">
+                <div id="profile-photo" class="rounded-circle screen-third" style="background-image: url('${user.picturePath}')"></div>
+            </div>
+            <div class="d-flex justify-content-center py-4">
+                <h1 id="profile-name">${user.username}</h1>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p id="profile-description">${user.description}</p>
+            </div>
+        `)
+    })
 }else if(document.getElementById('general-wall')){
     $('#profile-redirect').attr("href","../personal-wall/profile.php")
     
@@ -119,20 +142,33 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
-function loadPosts(index = 0) {
+function loadPosts(index = 0, profile = false) {
     POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", {
-        index: index
+        index: index,
+        profile: profile
     }, (data) => {
         const posts = JSON.parse(data);
+
         if (index < 10) {
             $(".post-container").remove();
             POST_GLOBAL_SIZE = posts[0].id;
         }
+
+        if(profile){
+            if(posts[posts.length-1].last) {
+                POST_GLOBAL_INDEX = 0;
+                $("#more-posts-btn").hide();
+            }
+        }
+
         for (const post of posts) {
+            let newStyle = "";
+            if(post.userID == POST_GLOBAL_USER) newStyle = "bg-light border-primary";
+
             $(".post-wrapper").append(`
-            <div class="post-container border rounded p-3 mb-3 shadow" data-postID="${post.id}">
+            <div class="post-container border rounded p-3 mb-3 shadow ${newStyle}" data-postID="${post.id}">
                <div class="w-100 text-center">
                 <img src="${post.postImage}" alt=""
                     class="img-fluid border w-100">
@@ -179,7 +215,7 @@ function loadPosts(index = 0) {
 
 //Load more posts button
 $("#more-posts-btn").click(e => {
-    loadPosts(POST_GLOBAL_INDEX);
+    loadPosts(POST_GLOBAL_INDEX, POST_GLOBAL_PROFILE);
     if (POST_GLOBAL_INDEX > POST_GLOBAL_SIZE) $("#more-posts-btn").hide()
 })
 
@@ -245,7 +281,7 @@ $("#post").click((e) => {
     }, data => {
         POST_GLOBAL_INDEX = 0;
         $("#more-posts-btn").show();
-        loadPosts();
+        loadPosts(POST_GLOBAL_INDEX, POST_GLOBAL_PROFILE);
 
         $("#modal-post-box").find("textarea").val("");
         $("#img-new-post").attr("src", "");

@@ -36,6 +36,13 @@
     background-position: center;
 }
 
+
+#profile-photo { 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .name-box {
     white-space: nowrap !important;
     overflow: hidden !important;
