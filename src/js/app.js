@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 $(document).ready(() => loadPosts());
 
-=======
->>>>>>> 9fdc95980da5dce0b8d9431426fe1be79bd5f246
 if (document.getElementById("profile")) {
 
     //-----------------------------------Modal to add a post----------------------------------//
