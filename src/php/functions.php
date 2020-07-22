@@ -108,9 +108,9 @@ function removeItemOfJson(string $filePath, array $item)
  * @param {Int} $id -> The ID of the image
  * @return {String}
  */
-function getImagePath(int $id) : string
+function getImagePath(int $id, string $customPath = "../JSON/images.json") : string
 {
-   $data = json_decode(file_get_contents("../JSON/images.json"));
+   $data = json_decode(file_get_contents($customPath));
    foreach($data as $img) 
       if($img->id == $id) return $img->path;
 

@@ -32,5 +32,7 @@ $jsonPOST->content = $_POST["text"];
 $jsonPOST->likes = 0;
 $jsonPOST->comments = 0;
 
+if(!findItem("../JSON/posts.json", "author_id", $_SESSION["loggedUserID"])) $jsonPOST->first = true;
+
 array_unshift($json2, $jsonPOST);
 file_put_contents("../JSON/posts.json", json_encode($json2));
