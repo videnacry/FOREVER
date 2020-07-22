@@ -1,22 +1,18 @@
 <?php
-
+session_start();
 require("../../src/php/functions.php");
 
 if($_POST){
-/*
-   $post = findItem("../../JSON/posts.json", "id", $_POST["post-id"]);
-   if($post){
-      removeItemOfJson("../../JSON/posts.json", $post);
-      $num = (int)$post["likes"];
-      if($_POST["like"] == "add"){
-         $post["likes"] = ++$num;
-      }else{
-         $post["likes"] = --$num;
-      }
-      addItemInJson("../../JSON/posts.json", $post);
-      echo "ok";
-   }
-   */
-}
+   $arrayPosts = json_decode(file_get_contents("../../JSON/posts.json"));
+   $index = findIndex($arrayPosts, "id", $_POST["post-id"]);
+   if($arrayPosts[$index]){
 
-//THIS FUNCTION DESTROYS posts.json, IT NEEDS TO BE REWORKED. visit teams for more information
+      $num = (int)$arrayPosts[$index]->likes;
+      if($_POST["like"] == "add"){
+         $arrayPosts[$index]->likes = ++$num;
+      }else{
+         $arrayPosts[$index]->likes = --$num;
+      }
+      updateJson("../../JSON/posts.json", $arrayPosts);
+   }
+}
