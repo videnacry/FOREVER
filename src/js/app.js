@@ -379,8 +379,11 @@ function createComment(commentObj) {
     name.text(commentObj.authorName);
     name.appendTo(nameContDiv);
     let creation = $("<p>");
-    creation.addClass("m-0");
-    creation.text(commentObj.creationDate);
+    // creation.addClass("m-0");
+    let small = $('<small>');
+    small.text(commentObj.creationDate);
+    small.appendTo(creation);
+    // creation.text(commentObj.creationDate);
     creation.appendTo(nameContDiv);
     let commentDiv = $("<div>");
     commentDiv.addClass("row mx-auto mt-3");
