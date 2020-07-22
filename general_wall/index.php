@@ -14,6 +14,7 @@
   <script src="https://kit.fontawesome.com/de217cab6a.js" crossorigin="anonymous"></script>
   <!--NPM Packages -->
   <script src="../node_modules/jquery/dist/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 </head>
