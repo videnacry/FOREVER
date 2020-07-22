@@ -277,11 +277,11 @@ function clickLike(heart){
    }
 
    $.ajax({
-      url: "click-like.php",
+      url: "../general_wall/actions/click-like.php",
       method: "POST",
       data: data,
       success: function (response) {
-          
+          console.log(response);
       }
   })
 }
