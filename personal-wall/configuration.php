@@ -28,22 +28,26 @@
                 <h3>Account general configuration</h3>
                 <div class="modal-body">
                     <form name="formUpdateUser" id="formUpdateUser" action="/" method="POST">
-                      <ul class="list-group list-group-flush">
+                      <ul id="update-login" class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between"> 
                             <span class="font-weight-bold px-0 col-1">Username</span>
-                            <input type="text" class="no-style text-muted ml-4 pl-4" name="username" id="username" value="<?php echo $_SESSION['user']['username']?>" disabled>
+                            <div>
+                                <input type="text" class="no-style text-muted ml-4 pl-4" name="username" id="username" value="<?php echo $_SESSION['user']['username']?>" disabled>
+                            </div>
                             <button class="btn" data-toggle="text-muted" data-target="#username" type="button">Edit</button>
                         </li>
                         <li class="list-group-item d-flex justify-content-between"> 
                             <span class="font-weight-bold px-0 col-1">Email</span>
-                            <input type="text" class="no-style text-muted ml-4 pl-4" name="email" id="email" value="<?php echo $_SESSION['user']['email']?>" disabled>
+                            <div>
+                                <input type="text" class="no-style text-muted ml-4 pl-4" name="email" id="email" value="<?php echo $_SESSION['user']['email']?>" disabled>
+                            </div>
                             <button class="btn" data-toggle="text-muted" data-target="#email" type="button">Edit</button>
                         </li>
                         <li class="list-group-item d-flex justify-content-between"> 
                             <span class="font-weight-bold px-0 col-1">Password</span>
                             <div class="ml-4 pl-4">
-                                <input class="no-style" type="password" name="password" id="password" placeholder="**********************" disabled></input >
-                                <input class="no-style collapse" type="password" placeholder="**********************" name="password-confirm" id="password-confirm"></input>
+                                <input class="no-style text-muted" type="password" name="password" id="password" placeholder="**********************" disabled></input >
+                                <input class="no-style collapse text-muted" type="password" placeholder="**********************" name="password-confirm" id="password-confirm"></input>
                             </div>
                             <button class="btn" type="button" data-toggle="collapse" data-target="#password-confirm" >Edit</button>
                         </li>

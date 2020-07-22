@@ -3,17 +3,18 @@ let POST_GLOBAL_SIZE = 0;
 
 $(document).ready(() => loadPosts());
 
-//---------------------------------Home redirect button in header----------------------------//
-
-$('#home-redirect').click(function(){
-    location.href = "../general_wall/"
-})
 
 if (document.getElementById("profile")) {
     //-----------------------------------Modal to add a post----------------------------------//
     const closeModals = document.getElementById("close-modals");
     const modalPost = document.getElementById("modal-post");
     const newPost = document.getElementById("new-post");
+
+    //---------------------------------Home redirect button in header----------------------------//
+
+    $('#home-redirect').click(function(){
+        location.href = "../general_wall/"
+    })
 
     $(modalPost).css({
         display: "none",
@@ -50,6 +51,26 @@ if (document.getElementById("profile")) {
     });
 }else if($('#general-wall')){
     $('#profile-redirect').attr("href","../personal-wall/profile.php")
+    
+    //---------------------------------Home redirect button in header----------------------------//
+
+    $('#home-redirect').click(function(){
+        location.href = "index.php"
+    })
+}
+
+if($('#update-login')){
+    $('#update-login').children('li').children('button').click(function(){
+        const parent = event.currentTarget.parentElement
+        const child = $(parent).children('div').children('input')
+        if(child.prop("disabled")){
+            child.prop("disabled",false)  
+        }else{
+            child.prop("disabled",true)
+        }
+        child.toggleClass("text-muted")  
+        child.focus()
+    })
 }
 
 //----------------------------Print posts in profile--------------------------------------//
