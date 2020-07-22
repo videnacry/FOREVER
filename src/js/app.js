@@ -81,7 +81,7 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
-function loadPosts(index=0) {
+function loadPosts(index = 0) {
     POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", {
@@ -182,9 +182,7 @@ function loadGifs(search = "") {
             $(".gif-element").remove();
             console.log(gifs);
             for (const gif of gifs)
-                box.append(
-                    `<img class="gif-element" src="${gif.images.preview_gif.url}" data-src="${gif.images.downsized.url}" alt="${gif.title}" Width="170px">`
-                );
+                box.append(`<img class="gif-element" src="${gif.images.preview_gif.url}" data-src="${gif.images.downsized.url}" alt="${gif.title}" Width="170px">`);
 
             $(".gif-element").click((e) => {
                 $("#img-new-post").attr("src", "");
@@ -202,7 +200,7 @@ $("#post").click((e) => {
     const text = $("#modal-post-box").find("textarea").val();
     const multimedia = $("#img-new-post").attr("src");
 
-    if(text.length == 0 && multimedia.length == 0) return;
+    if (text.length == 0 && multimedia.length == 0) return;
 
     $.post("../general_wall/newPost.php", {
         text: text,
@@ -303,9 +301,9 @@ $(".post-wrapper").on("click", ".fa-comment-alt", function (e) {
                 origin: origin,
             },
             (data) => {
-                console.log(data);
+                // console.log(data);
                 let myComments = JSON.parse(data);
-                console.log(myComments);
+                // console.log(myComments);
                 for (let i = 0; i < myComments.length; i++) {
                     let myComment = createComment(myComments[i]);
                     myComment.insertAfter($(e.target).parent().parent().next());
@@ -339,16 +337,15 @@ $(".post-wrapper").on("click", ".btn-new-comment", function (e) {
                 origin: "posts"
             },
             (data) => {
-                console.log(data);
-                // let myComments = JSON.parse(data);
-                // console.log(myComments);
-                // for (let i = 0; i < myComments.length; i++) {
-                //     let myComment = createComment(myComments[i]);
-                //     myComment.insertAfter($(e.target).parent().parent().next());
-                // }
+                // console.log(data);
+                let newComment = JSON.parse(data);
+                // console.log(newComment);
+                let commentBox = createComment(newComment);
+                commentBox.insertAfter($(e.target).parent().parent().parent());
+                let numComments = parseInt($(e.target).parent().parent().parent().prev().children().eq(1).children().eq(0).text());
+                $(e.target).parent().parent().parent().prev().children().eq(1).children().eq(0).text(numComments + 1);
             }
         );
-
         // Clear text area at the end of the process
         $(e.target).parent().parent().prev().children().eq(0).val('');
     }

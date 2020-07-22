@@ -16,6 +16,8 @@
 
   $commentsArray = json_decode(file_get_contents("../JSON/comments.json"));
   $postsArray = json_decode(file_get_contents("../JSON/posts.json"));
+  $usersArray = json_decode(file_get_contents("../JSON/users.json"));
+  $imagesArray = json_decode(file_get_contents("../JSON/images.json"));
 
   $newComment = new stdClass();
   $newComment->id = $commentsArray[count($commentsArray) - 1]->id + 1;
@@ -30,14 +32,26 @@
   file_put_contents("../JSON/comments.json", json_encode($commentsArray));
 
   foreach ($postsArray as &$post){
-    if ($post["id"] == $postId){
-      $post["comments"] = $post["comments"] + 1;
+    if ($post->id == $postId){
+      $post->comments = $post->comments + 1;
       break;
     }
   }
   file_put_contents("../JSON/posts.json", json_encode($postsArray));
 
+  $newFormattedComment = new stdClass();
+  $newFormattedComment->creationDate = date('F jS, Y \a\t H:i', $newComment->created);
+  $newFormattedComment->content = $newComment->content;
+  foreach ($usersArray as $user){
+    if ($user->id == $userId){
+      $newFormattedComment->authorName = $user->username;
+      foreach($imagesArray as $image){
+        if ($image->id == $user->main_picture_id){
+          $newFormattedComment->authorPictureUrl = $image->path;
+        }
+      }
+    }
+  }
 
-  $newComment->creationDate = date('F jS, Y \a\t H:i', $newComment->creationDate);
 
-  echo json_encode($newComment);
+  echo json_encode($newFormattedComment);
