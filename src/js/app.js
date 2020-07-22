@@ -83,12 +83,12 @@ function loadPosts(index=0) {
     $.post("../general_wall/getPosts.php", {
         index: index
     }, (data) => {
+       console.log(data);
         const posts = JSON.parse(data);
         if (index < 10) {
             $(".post-container").remove();
             POST_GLOBAL_SIZE = posts[0].id;
         }
-
         for (const post of posts) {
             $(".post-wrapper").append(`
             <div class="post-container border rounded p-3 mb-3 shadow" data-postID="${post.id}">
@@ -119,7 +119,7 @@ function loadPosts(index=0) {
                 <div class="row mt-2 px-3 justify-content-end">
                     <div class="num-likes mx-1">
                         <p class="m-0 d-inline">${post.likes}</p>
-                        <i class="far fa-heart icon-like" data-postID="${post.id}"></i>
+                        <i class="${post.isLike ? "fas" : "far"} fa-heart icon-like ${post.isLike}" data-postID="${post.id}"></i>
                         <!-- <i class="fas fa-heart"></i> -->
                     </div>
                     <div class="num-comments mx-1">
@@ -244,32 +244,23 @@ $(".post-wrapper").on("click", ".icon-like", function () {
 
 function clickLike(heart) {
     let count = parseInt($(heart).prev().text());
-    let type
-    let id
-    if($(heart).attr("data-postid")){
-       type = "posts"
-       id = $(heart).attr("data-postid")
-      }else{
-         type = "images"
-         id = $(heart).attr("data-imageid")
-    }
     let data;
 
-    if ($(heart).hasClass("active")) {
-        $(heart)
-            .prev()
-            .text(++count);
-        data = {
-            "post-id": $(heart).attr("data-postid"),
-            "like": "add",
-        };
-    } else {
+    if (!$(heart).hasClass("active")) {
         $(heart)
             .prev()
             .text(--count);
         data = {
             "post-id": $(heart).attr("data-postid"),
             "like": "remove",
+        };
+    } else {
+        $(heart)
+            .prev()
+            .text(++count);
+        data = {
+            "post-id": $(heart).attr("data-postid"),
+            "like": "add",
         };
     }
 
