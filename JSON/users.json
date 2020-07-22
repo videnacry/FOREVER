@@ -14,11 +14,7 @@
       "email": "rodriguezDeLaPrueba@gmail.com",
       "password": "security",
       "description": "",
-      "registered": {
-         "date": "2020-07-22 09:51:12.707729",
-         "timezone_type": 3,
-         "timezone": "Europe\/Berlin"
-      },
+      "registered": "2020-07-22",
       "main_picture_id": 0
    }
 ]

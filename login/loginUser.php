@@ -16,6 +16,14 @@ if(!$user && !$email) {
 if($usermail["password"] == $_POST["password"]) {
     session_start();
     $_SESSION["loggedUserID"] = $usermail["id"];
+    $_SESSION["user"] = [
+        "username" => $usermail["username"],
+        "email" => $usermail["email"],
+        "description" => $usermail["description"],
+        "registered" => $usermail["registered"],
+        "pictureID" => $usermail["main_picture_id"]
+    ];
+
     echo "SUCCESS";
 } else {
     echo "Password does not match!";
