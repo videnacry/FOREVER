@@ -49,13 +49,22 @@ if (document.getElementById("profile")) {
             },
         });
     });
-}else if($('#general-wall')){
+}else if(document.getElementById('general-wall')){
     $('#profile-redirect').attr("href","../personal-wall/profile.php")
+    
+    //---------------------------------Home redirect buttons in header----------------------------//
+
+    $('#home-redirect').click(function(){
+        location.href = "index.php"
+    })
+
+    $('#update-redirect').attr("href","../personal-wall/configuration.php")  
+}else{
     
     //---------------------------------Home redirect button in header----------------------------//
 
     $('#home-redirect').click(function(){
-        location.href = "index.php"
+        location.href = "../general_wall/"
     })
 }
 

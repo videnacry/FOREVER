@@ -14,7 +14,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a id="profile-redirect" class="dropdown-item" href="profile.php">Profile</a>
-                    <a class="dropdown-item" href="configuration.php">Update information</a>
+                    <a id="update-redirect" class="dropdown-item" href="configuration.php">Update information</a>
                     <div class="dropdown-divider"></div>
                     <form action="../login/forms/logout.php" method="get">
                         <button id="log-out" class="btn btn-block btn-light mb-2">Log out</button>
