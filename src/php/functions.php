@@ -8,7 +8,7 @@
 function getData(string $filePath)
 {
    $data = file_get_contents($filePath);
-   return json_decode($data, true);
+   return json_decode($data);
 }
 
 /**
@@ -17,7 +17,7 @@ function getData(string $filePath)
  * @param {String} $attr -> attribute to look for.
  * @param {String} $value -> match value.
  */
-function findItem(array $filePath, string $attr, string $value)
+function findItem(string $filePath, string $attr, string $value)
 {
    $arrayData = getData($filePath);
    foreach ($arrayData as $item) {
