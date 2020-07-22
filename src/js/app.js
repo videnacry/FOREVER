@@ -77,11 +77,7 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
-<<<<<<< HEAD
 function loadPosts(index=0) {
-=======
-function loadPosts(index = 0) {
->>>>>>> 42754f5d7cdfaa0ed5c06d5c2ce5ba04290580d1
     POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", {
