@@ -3,6 +3,7 @@ session_start();
 require("../../src/php/functions.php");
 
 if($_POST){
+   // Update posts.json
    $arrayPosts = json_decode(file_get_contents("../../JSON/posts.json"));
    $index = findIndex($arrayPosts, "id", $_POST["post-id"]);
    if($arrayPosts[$index]){
@@ -15,4 +16,10 @@ if($_POST){
       }
       updateJson("../../JSON/posts.json", $arrayPosts);
    }
+
+   //update likes.json
+   $arrayLikes = json_decode(file_get_contents("../../JSON/likes.json"));
+   $index = findIndex($arrayLikes, "user_id", $_SESSION["loggedUserID"]);
+   $arrayLikes[$index]->posts += ["post_id" => $_POST["post-id"]];
+   updateJson("../../JSON/likes.json", $arrayLikes);
 }

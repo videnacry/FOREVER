@@ -244,6 +244,15 @@ $(".post-wrapper").on("click", ".icon-like", function () {
 
 function clickLike(heart) {
     let count = parseInt($(heart).prev().text());
+    let type
+    let id
+    if($(heart).attr("data-postid")){
+       type = "posts"
+       id = $(heart).attr("data-postid")
+      }else{
+         type = "images"
+         id = $(heart).attr("data-imageid")
+    }
     let data;
 
     if ($(heart).hasClass("active")) {
@@ -252,7 +261,7 @@ function clickLike(heart) {
             .text(++count);
         data = {
             "post-id": $(heart).attr("data-postid"),
-            like: "add",
+            "like": "add",
         };
     } else {
         $(heart)
@@ -260,7 +269,7 @@ function clickLike(heart) {
             .text(--count);
         data = {
             "post-id": $(heart).attr("data-postid"),
-            like: "remove",
+            "like": "remove",
         };
     }
 
