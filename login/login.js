@@ -23,7 +23,7 @@ function validateLogin(t) {
         }, {
             el: password
         }])) {
-        $.post("login/loginUser.php", {
+        $.post("loginUser.php", {
             usermail: usermail.val(),
             password: password.val()
         }, data => {
@@ -90,7 +90,7 @@ function validateRegister(t) {
             }
         ])) {
         //If validation returns true =>
-        $.post("login/registerUser.php", {
+        $.post("registerUser.php", {
             username: user.val(),
             email: email.val(),
             password: password.val()
