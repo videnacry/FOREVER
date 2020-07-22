@@ -5,7 +5,6 @@ let POST_GLOBAL_USER = "";
 
 $(document).ready(() => {
     $.get("../src/php/getLoggedUserID.php", data => {
-        console.log(data)
         POST_GLOBAL_USER = JSON.parse(data).id;
         loadPosts(POST_GLOBAL_INDEX, POST_GLOBAL_PROFILE)
     })
@@ -150,6 +149,12 @@ function loadPosts(index = 0, profile = false) {
         profile: profile
     }, (data) => {
         const posts = JSON.parse(data);
+
+        if(posts.length == 0) { 
+            POST_GLOBAL_INDEX = 0;
+            $("#more-posts-btn").hide();
+            return;
+        }
 
         if (index < 10) {
             $(".post-container").remove();
@@ -425,7 +430,7 @@ $(".post-wrapper").on("click", ".btn-new-comment", function (e) {
 
 function createComment(commentObj) {
     let wrapper = $("<div>");
-    wrapper.addClass("border-left border-right border-bottom p-3 comment");
+    wrapper.addClass("border mt-2 p-3 comment");
     let innerCont = $("<div>");
     innerCont.addClass("comment-content-container p-3 border");
     innerCont.appendTo(wrapper);
@@ -471,7 +476,7 @@ function createComment(commentObj) {
 
 function createInputComment() {
     let wrapper = $('<div>');
-    wrapper.addClass('border mt-3 p-3 input-comment');
+    wrapper.addClass('border mt-3 p-3 input-comment bg-light');
 
     let textCont = $('<div>');
     textCont.addClass('row mx-0');
