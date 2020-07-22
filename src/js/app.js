@@ -1,3 +1,6 @@
+let POST_GLOBAL_INDEX = 0;
+let POST_GLOBAL_SIZE = 0;
+
 $(document).ready(() => loadPosts());
 
 if (document.getElementById("profile")) {
@@ -74,13 +77,17 @@ $("#formUpdateUser").submit(function (e) {
 //----------------------------- General wall ----------------------------------//
 
 // Load posts
-function loadPosts(index = 0) {
-    if (index < 10) $(".post-container").remove();
+function loadPosts(index=0) {
+    POST_GLOBAL_INDEX += 10;
 
     $.post("../general_wall/getPosts.php", {
         index: index
     }, (data) => {
         const posts = JSON.parse(data);
+        if(index < 10) {
+            $(".post-container").remove();
+            POST_GLOBAL_SIZE = posts[0].id;
+        }
 
         for (const post of posts) {
             $(".post-wrapper").append(`
@@ -117,7 +124,7 @@ function loadPosts(index = 0) {
                     </div>
                     <div class="num-comments mx-1">
                         <p class="m-0 d-inline">${post.comments}</p>
-                        <i class="far fa-comment-alt"></i>
+                        <i class="far fa-comment-alt" data-postID="${post.id}"></i>
                         <!-- <i class="fas fa-comment-alt"></i> -->
                     </div>
                 </div>
@@ -128,6 +135,12 @@ function loadPosts(index = 0) {
 
     /**/
 }
+
+//Load more posts button
+$("#more-posts-btn").click(e => {
+    loadPosts(POST_GLOBAL_INDEX);
+    if(POST_GLOBAL_INDEX > POST_GLOBAL_SIZE) $("#more-posts-btn").hide()
+})
 
 // Toggle GIF modal
 $("#gif-button").on("click", function () {
@@ -179,23 +192,26 @@ function loadGifs(search = "") {
     );
 }
 
+
 // Create new post
 $("#post").click((e) => {
     const text = $("#modal-post-box").find("textarea").val();
     const multimedia = $("#img-new-post").attr("src");
 
-    $.post(
-        "../general_wall/newPost.php", {
-            text: text,
-            image: multimedia,
-        },
-        (data) => {
-            loadPosts();
-            $("#modal-post-box").find("textarea").val("");
-            $("#img-new-post").attr("src", "");
-        }
-    );
-});
+    if(text.length == 0 && multimedia.length == 0) return;
+
+    $.post("../general_wall/newPost.php", {
+        text: text,
+        image: multimedia
+    }, data => {
+        POST_GLOBAL_INDEX = 0;
+        $("#more-posts-btn").show();
+        loadPosts();
+        
+        $("#modal-post-box").find("textarea").val("");
+        $("#img-new-post").attr("src", "");
+    })
+})
 
 // Preview loaded image
 function readURL(input) {
