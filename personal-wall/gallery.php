@@ -36,7 +36,6 @@
                background-position:center'.'" data-id="'.$img->id.'"></div>';
             }
             echo '</div></div>';
-            echo '<input type="hidden" name="portrait-id" id="portrait-id" value="'.$actualImg->id.'" />';
          ?>
       </div>
       <?php

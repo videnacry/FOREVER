@@ -171,6 +171,7 @@ $("#formUpdateUser").submit(function (e) {
     e.preventDefault();
     $(this).find('input').prop("disabled",false)
     data = $(this).serialize();
+    console.log(data)
     $.ajax({
         method: "POST",
         url: "control-data/update-validation.php",
