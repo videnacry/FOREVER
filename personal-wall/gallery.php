@@ -1,5 +1,5 @@
 
-       <div class="d-flex flex-wrap height-30 my-4 bg-light shadow">
+       <div class="d-flex flex-nowrap height-30 my-4 bg-light shadow">
          <?php
             $imgJson = json_decode(file_get_contents('../JSON/images.json'));
             $postJson = json_decode(file_get_contents('../JSON/posts.json'));
