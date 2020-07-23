@@ -1,5 +1,5 @@
 
-       <div class="d-flex flex-wrap height-30 my-4 bg-light shadow">
+       <div class="d-flex flex-nowrap height-30 my-4 bg-light shadow">
          <?php
             $imgJson = json_decode(file_get_contents('../JSON/images.json'));
             $postJson = json_decode(file_get_contents('../JSON/posts.json'));
@@ -16,14 +16,14 @@
                if($img->origin == "post"){
                   if(array_search($img->origin_id, $postsId)!=false){
                      array_push($userImgs,$img);
-                     if($img->id == $_SESSION['user']['pictureID']){
+                     if($img->id == $_SESSION['user']['main_picture_id']){
                         $actualImg = $img;
                      }   
                   }
                }else{
                   if($img->origin_id == $userId) {
                      array_push($userImgs,$img);
-                     if($img->id == $_SESSION['user']['pictureID']){
+                     if($img->id == $_SESSION['user']['main_picture_id']){
                         $actualImg = $img;
                      }
                   }
@@ -36,7 +36,6 @@
                background-position:center'.'" data-id="'.$img->id.'"></div>';
             }
             echo '</div></div>';
-            echo '<input type="hidden" name="portrait-id" id="portrait-id" value="'.$actualImg->id.'" />';
          ?>
       </div>
       <?php

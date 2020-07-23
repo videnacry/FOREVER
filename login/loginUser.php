@@ -21,7 +21,7 @@ if($usermail["password"] == $_POST["password"]) {
         "email" => $usermail["email"],
         "description" => $usermail["description"],
         "registered" => $usermail["registered"],
-        "pictureID" => $usermail["main_picture_id"]
+        "main_picture_id" => $usermail["main_picture_id"]
     ];
 
     echo "SUCCESS";

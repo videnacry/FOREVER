@@ -171,6 +171,7 @@ $("#formUpdateUser").submit(function (e) {
     e.preventDefault();
     $(this).find('input').prop("disabled",false)
     data = $(this).serialize();
+    console.log(data)
     $.ajax({
         method: "POST",
         url: "control-data/update-validation.php",
@@ -202,6 +203,7 @@ function loadPosts(index = 0, profile = false) {
         if (index < 10) {
             $(".post-container").remove();
             POST_GLOBAL_SIZE = posts[0].id;
+            if(POST_GLOBAL_SIZE <= POST_GLOBAL_INDEX) $("#more-posts-btn").hide();
         }
 
         if(profile){
