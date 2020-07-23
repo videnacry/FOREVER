@@ -13,7 +13,6 @@ class userTest extends TestCase {
             "description" => "Other admin personality, or a hack?",
             "registered" => 100000000,
             "main_picture_id" => 1,
-            "pictureID" => 3
         ];
         $this->assertEquals(
             findItem("./JSON/users.json", "id", 0),

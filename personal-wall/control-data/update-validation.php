@@ -115,7 +115,7 @@ if (isset($_POST)) {
    $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->username = $_POST["username"];
    $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->email = $_POST["email"];
    $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->description = $_POST["description"];
-   $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->pictureID = $_POST["portrait-id"];
+   $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->main_picture_id = $_POST["portrait-id"];
    updateJson("../../JSON/users.json", $usersData);
 
 
