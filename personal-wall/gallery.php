@@ -16,14 +16,14 @@
                if($img->origin == "post"){
                   if(array_search($img->origin_id, $postsId)!=false){
                      array_push($userImgs,$img);
-                     if($img->id == $_SESSION['user']['pictureID']){
+                     if($img->id == $_SESSION['user']['main_picture_id']){
                         $actualImg = $img;
                      }   
                   }
                }else{
                   if($img->origin_id == $userId) {
                      array_push($userImgs,$img);
-                     if($img->id == $_SESSION['user']['pictureID']){
+                     if($img->id == $_SESSION['user']['main_picture_id']){
                         $actualImg = $img;
                      }
                   }
