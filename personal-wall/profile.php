@@ -21,11 +21,8 @@
             include '../general_wall/post_modal.php';
             include 'update-user.php';
         ?>
-        <div id="profile" class="">
+        <div id="profile" class="container">
             <div class="d-flex d-flex flex-row-reverse">
-                <button type="button" data-toggle="modal" data-target="#modal-update-user" class="btn btn-secondary mx-2">
-                    <i class="fas fa-pencil-alt"></i> Update profile
-                </button>
                 <button id="new-post" class="btn btn-secondary mx-2"><i class="fas fa-plus-square"></i> Awesome post</button>
             </div>
             <div class="d-flex d-flex flex-row-reverse">

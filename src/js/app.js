@@ -104,8 +104,14 @@ if($('#formUpdateUser')){
         const child = $(parent).children('input')
         if(child.prop("disabled")){
             $('#formUpdateUser').children('div').children('div').children('input').prop("disabled","true")
+            $('#formUpdateUser').children('div').children('div').children('button').html('<i class="fas fa-pen"></i>&nbsp;Edit')
+            .removeClass('text-warning')
+            event.currentTarget.classList.add('text-warning')
+            event.currentTarget.innerHTML = '<i class="fas fa-window-close"></i>&nbsp;Cancel'
             child.prop("disabled",false)  
         }else{
+            event.currentTarget.innerHTML = '<i class="fas fa-pen"></i>&nbsp;Edit'
+            event.currentTarget.classList.remove('text-warning')
             child.prop("disabled",true)
         }
         child.toggleClass("text-muted")  

@@ -1,5 +1,5 @@
 
-       <div class="d-flex flex-wrap height-30 my-4">
+       <div class="d-flex flex-wrap height-30 my-4 bg-light shadow">
          <?php
             $imgJson = json_decode(file_get_contents('../JSON/images.json'));
             $postJson = json_decode(file_get_contents('../JSON/posts.json'));
@@ -32,7 +32,7 @@
             echo '<div id="profile-photo" class="'.'size-vw-30 portrait'.'" style="'.'background-image:url('."'".$actualImg->path."'".');'.'"></div>';
             echo '<div class="w-50 m-auto gallery"><div id="gallery" class="d-flex flex-wrap justify-content-center">';
             foreach($userImgs as $img){
-               echo '<div type="button" class="'.'screen-fifth'.'" style="'.'background-image:url('."'".$img->path."'".');background-size:cover;
+               echo '<div type="button" class="'.'screen-fifth m-1 rounded'.'" style="'.'background-image:url('."'".$img->path."'".');background-size:cover;
                background-position:center'.'" data-id="'.$img->id.'"></div>';
             }
             echo '</div></div>';

@@ -28,21 +28,21 @@
                             <label for="recipient-name" class="col-form-label">Username:</label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" name="username" id="username" value="<?php echo $_SESSION['user']['username']?>" disabled>
-                                <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                <button class="btn text-primary" type="button"><i class="fas fa-pen"></i>&nbsp;Edit</button>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Email:</label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" name="email" id="email" value="<?php echo $_SESSION['user']['email']?>" disabled>
-                                <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                <button class="btn text-primary" type="button"><i class="fas fa-pen"></i>&nbsp;Edit</button>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Description:</label>
                             <div class="d-flex">
                                 <input type="text" class="form-control" name="description" id="description" value="<?php echo $_SESSION['user']['description']?>" disabled>
-                                <button class="btn" type="button"><i class="fas fa-pencil-alt"></i>&nbsp;Edit</button>
+                                <button class="btn text-primary" type="button"><i class="fas fa-pen"></i>&nbsp;Edit</button>
                             </div>
                         </div>
                         <div class="modal fade" id="modal-update-user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
