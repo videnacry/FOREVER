@@ -129,6 +129,10 @@
     height: 100vh;
 }
 
+.no-bs-bg-primary{
+    background-color: rgb(203, 227, 255)!important;
+}
+
 /* ------ LIKE AND COMMENT ICONS ------ */
 
 .icon-like{

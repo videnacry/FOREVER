@@ -10,7 +10,7 @@
       $newMessage->id = $id;
       $newMessage->user_id = $_SESSION["loggedUserID"];
       $newMessage->user_name = $_SESSION["user"]["username"];
-      $newMessage->image = getImagePath($_SESSION["user"]["main_picture_id"], "../../JSON/images.json");
+      $newMessage->image = $_SESSION["user"]["main_picture_id"];
       $newMessage->text = $_POST["text"];
       array_push($messagesList, $newMessage);
       updateJson('../../JSON/messages.json', $messagesList);
@@ -23,21 +23,21 @@
 
     if(count($messages)){
         foreach($messages as $message){
-            if($message->id != $_SESSION["loggedUserID"]){
+            if($message->user_id != $_SESSION["loggedUserID"]){
                $messageTags = '<div class="d-flex flex-nowrap border rounded mt-2 mb-2 p-2 bg-light">'
-                                 .'<div class="w-100 order-0">' . $message->text . '</div>'
+                                 .'<div class="w-100 order-0 text-right">' . $message->text . '</div>'
                                  .'<div class="order-1">'
-                                    . '<div class="image-chat rounded-circle bg-primary" style="background-image: url(\'' . $message->image . '\');"></div>'
+                                    . '<div class="image-chat rounded-circle bg-primary" style="background-image: url(\'' . getImagePath($message->image, "../../JSON/images.json") . '\');"></div>'
                                  . '</div>'
                               . '</div>';
 
                $response .= $messageTags;
             }
             else{
-               $messageTags = '<div class="d-flex flex-nowrap border rounded mt-2 mb-2 p-2 bg-light">'
+               $messageTags = '<div class="d-flex flex-nowrap border rounded mt-2 mb-2 p-2 no-bs-bg-primary">'
                                  .'<div class="w-100 order-1">' . $message->text . '</div>'
                                  .'<div class="order-0">'
-                                    . '<div class="image-chat rounded-circle bg-primary" style="background-image: url(\'' . $message->image . '\');"></div>'
+                                    . '<div class="image-chat rounded-circle bg-primary" style="background-image: url(\'' . getImagePath($message->image, "../../JSON/images.json") . '\');"></div>'
                                  . '</div>'
                               . '</div>';
    
