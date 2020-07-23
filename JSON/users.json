@@ -1,1 +1,20 @@
-[{"id":0,"username":"Mr. Admin","email":"kalipo99@gmail.com","password":"MegaHardPassword99","description":"Other admin personality, or a hack?","registered":100000000,"main_picture_id":1,"pictureID":"3"},{"id":1,"username":"ElTetePrueba","email":"rodriguezDeLaPrueba@gmail.com","password":"security","description":"","registered":100000000,"main_picture_id":0},{"id":2,"username":"ezequiel","email":"lala@lala.com","password":"111111111","description":"","registered":100000000,"main_picture_id":0},{"id":3,"username":"MAKAKO","email":"maka@gmail.com","password":"12345678","description":"","registered":1595491492,"main_picture_id":0},{"id":4,"username":"T56k","email":"robot@gmail.com","password":"12345678","description":"","registered":1595491774,"main_picture_id":11}]
+[
+    {
+        "id": 0,
+        "username": "SuperAdmin",
+        "email": "kalipo99@gmail.com",
+        "password": "MegaHardPassword99",
+        "description": "I love lasagna and foxes. And I run this social network! Share your toughts with other users, but remember, they will stay FOREVER :o",
+        "registered": 100000000,
+        "main_picture_id": 1
+    },
+    {
+        "id": 1,
+        "username": "PickleRick",
+        "email": "ramon@gmail.com",
+        "password": "unapatata",
+        "description": "",
+        "registered": 1595493031,
+        "main_picture_id": 2
+    }
+]

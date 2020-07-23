@@ -51,5 +51,5 @@ $_SESSION["user"] = [
     "email" => $newUser->email,
     "description" => $newUser->description,
     "registered" => $newUser->registered,
-    "pictureID" => $newIMG->id
+    "main_picture_id" => $newIMG->id
 ];
