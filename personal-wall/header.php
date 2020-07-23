@@ -1,6 +1,6 @@
 
         <div class="nabvar navbar-dark bg-primary text-light px-4 pt-2 d-flex justify-content-between sticky-top">
-            <h2>FOREVER</h2>
+            <h2 >FOREVER</h2>
             <div class="d-flex">
                 <button class="btn" type="button" id="home-redirect">
                     <h5><i class="fas fa-home text-light"></i></h5>
