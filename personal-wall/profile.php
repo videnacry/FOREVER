@@ -22,8 +22,8 @@
             include 'update-user.php';
         ?>
         <div id="profile" class="container">
-            <div class="d-flex d-flex flex-row-reverse">
-                <button id="new-post" class="btn btn-secondary mx-2"><i class="fas fa-plus-square"></i> Awesome post</button>
+            <div class="d-flex d-flex flex-row-reverse w-100">
+                <button id="new-post" class="btn btn-primary mx-auto"><i class="fas fa-plus-square"></i> New post</button>
             </div>
             <div class="d-flex d-flex flex-row-reverse">
                 
