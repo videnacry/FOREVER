@@ -10,9 +10,10 @@ class userTest extends TestCase {
             "username" => "Mr. Admin",
             "email" => "kalipo99@gmail.com",
             "password" => "MegaHardPassword99",
-            "description" => "",
-            "registered" => 1000000000,
-            "main_picture_id" => 1
+            "description" => "Other admin personality, or a hack?",
+            "registered" => 100000000,
+            "main_picture_id" => 1,
+            "pictureID" => 3
         ];
         $this->assertEquals(
             findItem("./JSON/users.json", "id", 0),
@@ -41,7 +42,7 @@ class userTest extends TestCase {
     }
 
     public function testFindIndex() : void {
-        $expectedIndex = 0;
+        $expectedIndex = 4;
         $posts = getData("./JSON/posts.json");
         $this->assertEquals(
             findIndex($posts, "id", 12),
