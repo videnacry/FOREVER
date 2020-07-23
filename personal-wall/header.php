@@ -36,13 +36,9 @@
         </button>
       </div>
       <div class="modal-body">
-        <pre id="chat-content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque magni illo aliquid, iusto veniam libero nobis sunt reiciendis maiores. Quae incidunt quisquam laboriosam quasi placeat ullam maxime, veritatis inventore alias!
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi minus molestias porro! Odit eos autem exercitationem suscipit adipisci iusto omnis nobis ratione harum, consequuntur consectetur repellat tempore similique perspiciatis voluptate.
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius itaque deleniti quia aperiam, ab praesentium aliquam necessitatibus excepturi molestiae hic sit incidunt odit exercitationem non alias velit, numquam placeat magnam.
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium, sunt tenetur incidunt nobis amet placeat autem odit ex aliquid expedita rerum unde? Accusantium odio et ex dolores, deleniti aliquam quod.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum repellendus eligendi odio aliquid, quod impedit molestias nesciunt nam? Molestias ducimus quo quae maiores dolore perspiciatis tempora aspernatur qui eius! Corporis?
-        </pre>
+        <div id="chat-content">
+        </div>
+
       </div>
       <div class="modal-footer">
         <div class="form-group col-12">

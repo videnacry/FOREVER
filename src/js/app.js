@@ -16,7 +16,7 @@ if($('#open-chat')){
             $('#chat-content').html(response)
         })
     }
-    setInterval(getMessages, 1000)
+    setInterval(getMessages, 10000)
     $('#open-chat').click(function(){
         getMessages()
     })

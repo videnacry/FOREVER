@@ -1,40 +1,47 @@
 <?php
-    $update = false;
+   require("functions.php");
+   session_start();
     if(isset($_POST['text'])){
-        $update = true;
+        /* Update messages */
+    $messagesList = json_decode(file_get_contents('../../JSON/messages.json'));
+    if(!$messagesList) $messagesList = [];
+      $id = count($messagesList) == 0 ? 1 : end($messagesList)->id + 1;
+      $newMessage = new stdClass();
+      $newMessage->id = $id;
+      $newMessage->user_id = $_SESSION["loggedUserID"];
+      $newMessage->user_name = $_SESSION["user"]["username"];
+      $newMessage->image = getImagePath($_SESSION["user"]["pictureID"], "../../JSON/images.json");
+      $newMessage->text = $_POST["text"];
+      array_push($messagesList, $newMessage);
+      updateJson('../../JSON/messages.json', $messagesList);
     }
     $userIds = [1];
     $chats = json_decode(file_get_contents('../../JSON/chats.json'));
     $messages = json_decode(file_get_contents('../../JSON/messages.json'));
     $chatFound = true;
-    $messageId;
-    $response;
-    foreach($chats as $chat){
-        foreach($userIds as $userId){
-            if(array_search($userId,$chat->participants)>=0){
-            }else{
-                $chatFound = false;
-            break;
-            }
-        }
-        if($chatFound == false){
-            $chatFound = true;
-        }else{
-            $messageId = $chat->id;
-        break;
-        }
-    }
-    if($messageId >= 0){
+    $response = "";
+
+    if(count($messages)){
         foreach($messages as $message){
-            if($message->id == $messageId){
-                if($update){
-                    $message->text = $message->text . '<br>' . $_POST['text'];
-                    file_put_contents('../../JSON/messages.json',json_encode($messages));
-                }
-                $response = $message->text;
+            if($message->id != $_SESSION["loggedUserID"]){
+               $messageTags = '<div class="d-flex flex-nowrap border rounded mt-2 mb-2 p-2 bg-light">'
+                                 .'<div class="w-100 order-0">' . $message->text . '</div>'
+                                 .'<div class="order-1">'
+                                    . '<div class="image-chat rounded-circle bg-primary" style="background-image: url(\'' . $message->image . '\');"></div>'
+                                 . '</div>'
+                              . '</div>';
+
+               $response .= $messageTags;
             }
             else{
-                $response = "Couldn't be found the chat with that id";
+               $messageTags = '<div class="d-flex flex-nowrap border rounded mt-2 mb-2 p-2 bg-light">'
+                                 .'<div class="w-100 order-1">' . $message->text . '</div>'
+                                 .'<div class="order-0">'
+                                    . '<div class="image-chat rounded-circle bg-primary" style="background-image: url(\'' . $message->image . '\');"></div>'
+                                 . '</div>'
+                              . '</div>';
+   
+               $response .= $messageTags;
             }
         }
     }else{
