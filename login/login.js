@@ -94,7 +94,15 @@ function validateRegister(t) {
             username: user.val(),
             email: email.val(),
             password: password.val()
-        }, () => location.replace("index.php"));
+        }, data => {
+            const error = $(`<div class='alert alert-danger'>${data}</div>`);
+            console.log(data)
+            if (data == "SUCCESS") location.replace("index.php")
+            else {
+                if (data.includes("email")) email.after(error);
+                else user.after(error);
+            }
+        });
     }
 }
 

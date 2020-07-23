@@ -1,6 +1,16 @@
 <?php
+require "../src/php/functions.php";
+
 $json = json_decode(file_get_contents("../JSON/users.json"));
 $date = new DateTime();
+
+if(findItem("../JSON/users.json", "username", $_POST["username"]) != FALSE) { 
+    echo "Username is taken!";
+    die();
+} else if(findItem("../JSON/users.json", "email", $_POST["email"]) != FALSE) { 
+    echo "This email is already in use!";
+    die();
+}
 
 
 //PROFILE PICTURE
@@ -53,3 +63,5 @@ $_SESSION["user"] = [
     "registered" => $newUser->registered,
     "main_picture_id" => $newIMG->id
 ];
+
+echo "SUCCESS";
