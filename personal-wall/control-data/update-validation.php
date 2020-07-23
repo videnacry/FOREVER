@@ -47,6 +47,50 @@ if (isset($_POST)) {
       die();
    }
 
+   
+   if ($_POST["description"] != $_SESSION["user"]["description"]) {
+      if (empty($_POST["description"]) || strlen($_POST["description"]) > 100) {
+         echo json_encode([
+            "type" => "error",
+            "input" => "description",
+            "message" => "Please entry a valid description. Less than 100 characters."
+         ]);
+         die();
+      }
+   }
+
+   $userCompareDescription = $usersData[findIndex($usersData, "description", $_POST["description"])];
+   if ($userCompareDescription && $userCompareDescription->id != $_SESSION["loggedUserID"] && $userCompareDescription->description == $_POST["description"]) {
+      echo json_encode([
+         "type" => "error",
+         "input" => "description",
+         "message" => "Already exist an user with this description."
+      ]);
+      die();
+   }
+
+   
+   // if ($_POST["pictureID"] != $_SESSION["user"]["pictureID"]) {
+   //    if (empty($_POST["pictureID"]) || strlen($_POST["pictureID"]) > 100) {
+   //       echo json_encode([
+   //          "type" => "error",
+   //          "input" => "pictureID",
+   //          "message" => "Please entry a valid description. Less than 100 characters."
+   //       ]);
+   //       die();
+   //    }
+   // }
+
+   // $userComparePictureID = $usersData[findIndex($usersData, "pictureID", $_POST["pictureID"])];
+   // if ($userComparePictureID && $userComparePictureID->id != $_SESSION["loggedUserID"] && $userComparePictureID->pictureID == $_POST["pictureID"]) {
+   //    echo json_encode([
+   //       "type" => "error",
+   //       "input" => "pictureID",
+   //       "message" => "Already exist an user with this pictureID."
+   //    ]);
+   //    die();
+   // }
+
    if (empty($_POST["password"]) || strlen($_POST["password"]) < 6) {
       echo json_encode([
          "type" => "error",
@@ -70,6 +114,8 @@ if (isset($_POST)) {
 
    $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->username = $_POST["username"];
    $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->email = $_POST["email"];
+   $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->description = $_POST["description"];
+   $usersData[findIndex($usersData, "id", $_SESSION["loggedUserID"])]->pictureID = $_POST["portrait-id"];
    updateJson("../../JSON/users.json", $usersData);
 
 

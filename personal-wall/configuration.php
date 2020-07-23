@@ -57,11 +57,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">Password:</label>
-                                            <input class="form-control" name="password" id="password"></input>
+                                            <input type="password" class="form-control" name="password" id="password"></input>
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">Confirm Password:</label>
-                                            <input class="form-control" name="password-confirm" id="password-confirm"></input>
+                                            <input type="password" class="form-control" name="password-confirm" id="password-confirm"></input>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-update-user" value="Save">

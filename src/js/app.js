@@ -10,7 +10,6 @@ $(document).ready(() => {
     })
 });
 
-
 if (document.getElementById("profile")) {
     //-----------------------------------Modal to add a post----------------------------------//
     const closeModals = document.getElementById("close-modals");
@@ -87,6 +86,15 @@ if (document.getElementById("profile")) {
 
     $('#home-redirect').click(function(){
         location.href = "../general_wall/"
+    })
+
+    //---------------------Change data profile photo by gallery image click----------------------//
+
+    $('#gallery').children().click(function(){
+        const profilePhoto = document.getElementById('profile-photo')
+        profilePhoto.style.backgroundImage = event.currentTarget.style.backgroundImage
+        profilePhoto.dataset.id = event.currentTarget.dataset.id
+        document.getElementById('portrait-id').value = profilePhoto.dataset.id
     })
 }
 

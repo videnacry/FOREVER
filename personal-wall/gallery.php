@@ -15,26 +15,30 @@
             foreach ($imgJson as $img) {
                if($img->origin == "post"){
                   if(array_search($img->origin_id, $postsId)!=false){
-                     array_push($userImgs,$img->path);
+                     array_push($userImgs,$img);
                      if($img->id == $_SESSION['user']['pictureID']){
-                        $actualImg = $img->path;
+                        $actualImg = $img;
                      }   
                   }
                }else{
                   if($img->origin_id == $userId) {
-                     array_push($userImgs,$img->path);
+                     array_push($userImgs,$img);
                      if($img->id == $_SESSION['user']['pictureID']){
-                        $actualImg = $img->path;
+                        $actualImg = $img;
                      }
                   }
                }
             }
-            echo '<div class="'.'size-vw-30 portrait'.'" style="'.'background-image:url('."'".$actualImg."'".');'.'"></div>';
-            echo '<div class="w-50 m-auto gallery"><div class="d-flex flex-wrap justify-content-center">';
+            echo '<div id="profile-photo" class="'.'size-vw-30 portrait'.'" style="'.'background-image:url('."'".$actualImg->path."'".');'.'"></div>';
+            echo '<div class="w-50 m-auto gallery"><div id="gallery" class="d-flex flex-wrap justify-content-center">';
             foreach($userImgs as $img){
-               echo '<div class="'.'screen-fifth'.'" style="'.'background-image:url('."'".$img."'".');background-size:cover;
-               background-position:center'.'"></div>';
+               echo '<div type="button" class="'.'screen-fifth'.'" style="'.'background-image:url('."'".$img->path."'".');background-size:cover;
+               background-position:center'.'" data-id="'.$img->id.'"></div>';
             }
             echo '</div></div>';
+            echo '<input type="hidden" name="portrait-id" id="portrait-id" value="'.$actualImg->id.'" />';
          ?>
       </div>
+      <?php
+         echo '<input type="hidden" name="portrait-id" id="portrait-id" value="'.$actualImg->id.'" />';
+      ?>
