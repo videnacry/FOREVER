@@ -7,10 +7,10 @@ class userTest extends TestCase {
     public function testFindItem() : void {
         $expectedUser = [
             "id" => 0,
-            "username" => "Mr. Admin",
+            "username" => "SuperAdmin",
             "email" => "kalipo99@gmail.com",
             "password" => "MegaHardPassword99",
-            "description" => "Other admin personality, or a hack?",
+            "description" => "I love lasagna and foxes. And I run this social network! Share your toughts with other users, but remember, they will stay FOREVER :o",
             "registered" => 100000000,
             "main_picture_id" => 1,
         ];
@@ -41,10 +41,10 @@ class userTest extends TestCase {
     }
 
     public function testFindIndex() : void {
-        $expectedIndex = 4;
+        $expectedIndex = 3;
         $posts = getData("./JSON/posts.json");
         $this->assertEquals(
-            findIndex($posts, "id", 12),
+            findIndex($posts, "id", 0),
             $expectedIndex
         );
     }
