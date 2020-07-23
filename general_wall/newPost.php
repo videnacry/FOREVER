@@ -15,8 +15,6 @@ if(strlen($_POST["image"]) > 0) {
     $jsonIMG->origin = "post";
     $jsonIMG->origin_id = $json2[0]->id + 1;
     $jsonIMG->path = $_POST["image"];
-    $jsonIMG->description = "";
-    $jsonIMG->likes = 0;
     
     array_unshift($json, $jsonIMG);
     file_put_contents("../JSON/images.json", json_encode($json));
