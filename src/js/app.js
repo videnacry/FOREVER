@@ -10,6 +10,35 @@ $(document).ready(() => {
     })
 });
 
+if($('#open-chat')){
+    function getMessages(){
+        $.get("../src/php/chat.php", function(response){
+            $('#chat-content').html(response)
+        })
+    }
+    setInterval(getMessages, 1000)
+    $('#open-chat').click(function(){
+        getMessages()
+    })
+    $('#send-message').click(function()
+        {$.get("../src/php/getLoggedUserID.php", data => {
+            const user = JSON.parse(data);
+            $.ajax({
+                url:"../src/php/chat.php",
+                method:"POST",
+                data:{
+                    text:$('#new-message').val(),
+                    emitter:user.username
+                },
+                success:function(response){
+                    $('#chat-content').html(response)
+                    $('#new-message').val('')
+                }
+            })
+        })
+    })
+}
+
 if (document.getElementById("profile")) {
     //-----------------------------------Modal to add a post----------------------------------//
     const closeModals = document.getElementById("close-modals");
