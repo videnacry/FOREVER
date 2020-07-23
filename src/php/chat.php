@@ -10,7 +10,7 @@
       $newMessage->id = $id;
       $newMessage->user_id = $_SESSION["loggedUserID"];
       $newMessage->user_name = $_SESSION["user"]["username"];
-      $newMessage->image = getImagePath($_SESSION["user"]["pictureID"], "../../JSON/images.json");
+      $newMessage->image = getImagePath($_SESSION["user"]["main_picture_id"], "../../JSON/images.json");
       $newMessage->text = $_POST["text"];
       array_push($messagesList, $newMessage);
       updateJson('../../JSON/messages.json', $messagesList);
